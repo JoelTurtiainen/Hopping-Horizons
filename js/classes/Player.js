@@ -1,5 +1,5 @@
 class Player extends Sprite {
-	constructor({ position, collisionBlocks, platformCollisionBlocks, imageSrc, frameRate, frameBuffer, scale = 0.5, animations }) {
+	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, imageSrc, frameRate, frameBuffer, scale = 0.5, animations }) {
 		super({ imageSrc, frameRate, scale });
 		this.position = position;
 		this.frameBuffer = frameBuffer;
@@ -9,6 +9,7 @@ class Player extends Sprite {
 		};
 		this.collisionBlocks = collisionBlocks;
 		this.platformCollisionBlocks = platformCollisionBlocks;
+		this.pickupCollisionBlocks = pickupCollisionBlocks;
 		this.hitbox = {
 			position: {
 				x: this.position.x,
@@ -35,6 +36,12 @@ class Player extends Sprite {
 			},
 			width: 200,
 			height: 80,
+		};
+
+		this.stats = {
+			health: 100,
+			coins: 0,
+			inventory: {},
 		};
 	}
 
@@ -105,16 +112,16 @@ class Player extends Sprite {
 		this.updateCameraBox();
 
 		// Visualize camera bounding box
-		c.fillStyle = 'rgba(0, 0, 255, 0.2)';
-		c.fillRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
+		// c.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+		// c.strokeRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
 
 		// Visualize image bounding box
 		// c.fillStyle = 'rgba(0, 255, 0, 0.2)';
 		// c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// Visualize hitbox bounding box
-		// c.fillStyle = 'rgba(255, 0, 0, 0.2)';
-		// c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+		c.fillStyle = 'rgba(255, 0, 0, 0.2)';
+		c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
 
 		this.draw();
 
@@ -161,6 +168,26 @@ class Player extends Sprite {
 					this.position.x = collisionBlock.position.x + collisionBlock.width - offset + 0.01;
 					break;
 				}
+			}
+		}
+		// Pickup collisions
+		for (let i = 0; i < this.pickupCollisionBlocks.length; i++) {
+			const item = this.pickupCollisionBlocks[i];
+
+			if (
+				collision({
+					object1: this.hitbox,
+					object2: item,
+				})
+			) {
+				console.log(`Touched a pickup: ${item.name}`);
+				item.collected = true;
+
+				// remove the item from array
+				this.pickupCollisionBlocks = this.pickupCollisionBlocks.filter((i) => i !== item);
+				if (this.stats.inventory[item.name]) this.stats.inventory[item.name]++;
+				else this.stats.inventory[item.name] = 1;
+				break;
 			}
 		}
 	}

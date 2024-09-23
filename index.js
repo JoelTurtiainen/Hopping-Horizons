@@ -4,6 +4,8 @@ const c = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 c.imageSmoothingEnabled = false;
+c.fillStyle = 'white';
+c.font = '20px Arial';
 
 const scaledCanvas = {
 	width: canvas.width / 4,
@@ -42,6 +44,21 @@ platformCollisions2D.forEach((row, y) => {
 	});
 });
 
+// Pickups
+const pickupCollisions2D = [];
+for (let i = 0; i < pickupCollisions.length; i += 36) {
+	pickupCollisions2D.push(pickupCollisions.slice(i, i + 36));
+}
+
+const pickupCollisionBlocks = [];
+pickupCollisions2D.forEach((row, y) => {
+	row.forEach((symbol, x) => {
+		if (symbol !== 0) {
+			pickupCollisionBlocks.push(new PickableItem({ symbol, imageSrc: './img/items.png', position: { x: x * 16, y: y * 16 } }));
+		}
+	});
+});
+
 const gravity = 0.1;
 
 const player = new Player({
@@ -51,6 +68,7 @@ const player = new Player({
 	},
 	collisionBlocks,
 	platformCollisionBlocks,
+	pickupCollisionBlocks,
 	frameBuffer: 8,
 	imageSrc: './img/warrior/Idle.png',
 	frameRate: 8,
@@ -139,6 +157,12 @@ function animate() {
 	// 	block.update();
 	// });
 
+	pickupCollisionBlocks.forEach((block) => {
+		if (!block.collected) {
+			block.update();
+		}
+	});
+
 	player.checkForHorizontalCanvasCollision();
 	player.update();
 
@@ -167,7 +191,22 @@ function animate() {
 		if (player.lastDirection === 'right') player.switchSprite('Fall');
 		else player.switchSprite('FallLeft');
 	}
+
 	c.restore();
+
+	// Temporary inventory UI
+	let invTextOffset = 20;
+	for (const [key, value] of Object.entries(player.stats.inventory)) {
+		c.fillText(`${value}x ${key}`, canvas.width - 100, invTextOffset);
+		invTextOffset += 20;
+	}
+
+	// Bottom-middle position of player
+	const playerX = (player.hitbox.position.x + player.hitbox.width / 2).toFixed(2);
+	const playerY = (player.hitbox.position.y + player.hitbox.height).toFixed(2);
+
+	c.fillText(`X:${playerX}`, 0, 20);
+	c.fillText(`Y:${playerY}`, 0, 40);
 }
 
 animate();
