@@ -1,8 +1,9 @@
 class Player extends Sprite {
-	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, imageSrc, frameRate, frameBuffer, scale = 0.5, animations }) {
-		super({ imageSrc, frameRate, scale });
+	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, character }) {
+		super({ imageSrc: character.imageSrc, frameRate: character.frameRate, scale: character.scale });
 		this.position = position;
-		this.frameBuffer = frameBuffer;
+		this.character = character;
+		this.frameBuffer = this.character.frameBuffer;
 		this.velocity = {
 			x: 0,
 			y: 1,
@@ -19,15 +20,8 @@ class Player extends Sprite {
 			height: 10,
 		};
 
-		this.animations = animations;
+		this.animations = this.loadAnimations(this.character.animations);
 		this.lastDirection = 'right';
-
-		for (let key in this.animations) {
-			const image = new Image();
-			image.src = this.animations[key].imageSrc;
-
-			this.animations[key].image = image;
-		}
 
 		this.camerabox = {
 			position: {
@@ -43,6 +37,39 @@ class Player extends Sprite {
 			coins: 0,
 			inventory: {},
 		};
+	}
+
+	getPosition() {
+		return { x: player.hitbox.position.x + player.hitbox.width / 2, y: player.hitbox.position.y + player.hitbox.height };
+	}
+
+	loadAnimations(animations) {
+		for (let key in animations) {
+			const image = new Image();
+			image.src = animations[key].imageSrc;
+
+			animations[key].image = image;
+		}
+		return animations;
+	}
+
+	switchCharacter(character) {
+		// Store the current position
+		const currentPosition = { x: this.position.x, y: this.position.y };
+
+		// Calculate the offset based on the difference in image sizes
+		const currentImageSize = { width: this.width, height: this.height };
+		const newImageSize = { width: character.img.width, height: character.img.height };
+
+		const offset = { x: (currentImageSize.width - newImageSize.width) / 2, y: currentImageSize.height - newImageSize.height };
+
+		// Switch character
+		this.character = character;
+		this.updateImgSource({ imageSrc: this.character.imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
+		this.animations = this.loadAnimations(this.character.animations);
+
+		// Reapply the stored position with the offset
+		this.position = { x: currentPosition.x + offset.x, y: currentPosition.y + offset.y };
 	}
 
 	switchSprite(key) {
@@ -116,8 +143,8 @@ class Player extends Sprite {
 		// c.strokeRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
 
 		// Visualize image bounding box
-		// c.fillStyle = 'rgba(0, 255, 0, 0.2)';
-		// c.fillRect(this.position.x, this.position.y, this.width, this.height);
+		c.fillStyle = 'rgba(0, 255, 0, 0.2)';
+		c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// Visualize hitbox bounding box
 		c.fillStyle = 'rgba(255, 0, 0, 0.2)';
@@ -136,11 +163,11 @@ class Player extends Sprite {
 	updateHitbox() {
 		this.hitbox = {
 			position: {
-				x: this.position.x + 35,
-				y: this.position.y + 26,
+				x: this.position.x + this.character.hitbox.position.x,
+				y: this.position.y + this.character.hitbox.position.y,
 			},
-			width: 14,
-			height: 27,
+			width: this.character.hitbox.width,
+			height: this.character.hitbox.height,
 		};
 	}
 

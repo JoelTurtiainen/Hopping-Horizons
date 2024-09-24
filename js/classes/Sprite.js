@@ -16,6 +16,25 @@ class Sprite {
 		this.frameBuffer = frameBuffer;
 		this.elapsedFrames = 0;
 	}
+
+	updateImgSource({ imageSrc, scale, frameRate, frameBuffer }) {
+		this.loaded = false;
+		this.currentFrame = 0;
+		this.elapsedFrames = 0;
+		this.scale = scale;
+		this.image = new Image();
+		this.image.src = imageSrc;
+		this.image.onload = () => {
+			this.width = (this.image.width / this.frameRate) * this.scale;
+			this.height = this.image.height * this.scale;
+			this.loaded = true;
+		};
+		this.image.src = imageSrc;
+		this.frameRate = frameRate;
+
+		this.frameBuffer = frameBuffer;
+	}
+
 	draw() {
 		if (!this.image) return;
 
@@ -34,6 +53,7 @@ class Sprite {
 		this.draw();
 		this.updateFrames();
 	}
+
 	updateFrames() {
 		this.elapsedFrames++;
 
