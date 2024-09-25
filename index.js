@@ -1,6 +1,11 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
+let msPrev = window.performance.now();
+const fps = 60;
+const msPerFrame = 1000 / fps;
+let frames = 0;
+
 canvas.width = 1024;
 canvas.height = 576;
 c.imageSmoothingEnabled = false;
@@ -103,6 +108,14 @@ let queueCharacterChange = false;
 function animate() {
 	window.requestAnimationFrame(animate);
 
+	const msNow = window.performance.now();
+	const msPassed = msNow - msPrev;
+
+	if (msPassed < msPerFrame) return;
+
+	const excessTime = msPassed % msPerFrame;
+	msPrev = msNow - excessTime;
+
 	c.save();
 	c.scale(4, 4);
 	c.translate(camera.position.x, camera.position.y);
@@ -172,6 +185,8 @@ function animate() {
 
 	c.fillText(`X:${playerX}`, 0, 20);
 	c.fillText(`Y:${playerY}`, 0, 40);
+
+	frames++;
 }
 
 animate();
