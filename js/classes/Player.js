@@ -53,20 +53,21 @@ class Player extends Sprite {
 		return animations;
 	}
 
-	switchCharacter(character) {
-		// Store the current position
-		const currentPosition = { x: this.position.x, y: this.position.y };
-
-		// Calculate the offset based on the difference in image sizes
+	async switchCharacter(character) {
+		// Store the current position & Image Size
+		const currentPosition = { x: this.position.x, y: this.position.y + this.character.hitbox.y };
 		const currentImageSize = { width: this.width, height: this.height };
-		const newImageSize = { width: character.img.width, height: character.img.height };
-
-		const offset = { x: (currentImageSize.width - newImageSize.width) / 2, y: currentImageSize.height - newImageSize.height };
 
 		// Switch character
 		this.character = character;
-		this.updateImgSource({ imageSrc: this.character.imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
+		await this.updateImgSource({ imageSrc: this.character.imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
+
+		// Load Animations
 		this.animations = this.loadAnimations(this.character.animations);
+
+		// Get new image size and calculate offset
+		const newImageSize = { width: this.width, height: this.height + this.character.hitbox.y };
+		const offset = { x: (currentImageSize.width - newImageSize.width) / 2, y: currentImageSize.height - newImageSize.height };
 
 		// Reapply the stored position with the offset
 		this.position = { x: currentPosition.x + offset.x, y: currentPosition.y + offset.y };
@@ -143,7 +144,7 @@ class Player extends Sprite {
 		// c.strokeRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
 
 		// Visualize image bounding box
-		c.fillStyle = 'rgba(0, 255, 0, 0.2)';
+		c.fillStyle = 'rgba(0, 255, 0, 0.1)';
 		c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// Visualize hitbox bounding box
@@ -163,10 +164,10 @@ class Player extends Sprite {
 	updateHitbox() {
 		this.hitbox = {
 			position: {
-				x: this.position.x + this.character.hitbox.position.x,
-				y: this.position.y + this.character.hitbox.position.y,
+				x: this.position.x - 8 + this.width / 2,
+				y: this.position.y + this.character.hitbox.y,
 			},
-			width: this.character.hitbox.width,
+			width: 14,
 			height: this.character.hitbox.height,
 		};
 	}

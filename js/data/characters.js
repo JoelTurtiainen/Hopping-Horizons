@@ -1,19 +1,10 @@
-//TODO: clean the magic values
 const characterOne = {
 	imageSrc: './img/warrior/Idle.png',
-	img: {
-		width: 80,
-		height: 55.5,
-	},
 	frameBuffer: 7,
 	frameRate: 8,
 	scale: 0.5,
 	hitbox: {
-		position: {
-			x: 33,
-			y: 26,
-		},
-		width: 14,
+		y: 26,
 		height: 27,
 	},
 	animations: {
@@ -60,22 +51,13 @@ const characterOne = {
 	},
 };
 
-//TODO: clean the magic values
 const characterTwo = {
 	imageSrc: './img/Froggo/Idle.png',
 	scale: 0.8,
-	img: {
-		width: 51.2,
-		height: 38.4,
-	},
 	frameBuffer: 8,
 	frameRate: 4,
 	hitbox: {
-		position: {
-			x: 18.6,
-			y: 15,
-		},
-		width: 14,
+		y: 15,
 		height: 10,
 	},
 	animations: {

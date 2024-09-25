@@ -3,18 +3,25 @@ class Sprite {
 		this.position = position;
 		this.scale = scale;
 		this.loaded = false;
-		this.image = new Image();
-		this.image.src = imageSrc;
-		this.image.onload = () => {
-			this.width = (this.image.width / this.frameRate) * this.scale;
-			this.height = this.image.height * this.scale;
-			this.loaded = true;
-		};
-		this.image.src = imageSrc;
 		this.frameRate = frameRate;
 		this.currentFrame = 0;
 		this.frameBuffer = frameBuffer;
 		this.elapsedFrames = 0;
+
+		this.loadImage(imageSrc);
+	}
+
+	loadImage(imageSrc) {
+		return new Promise((resolve) => {
+			this.image = new Image();
+			this.image.src = imageSrc;
+			this.image.onload = () => {
+				this.width = (this.image.width / this.frameRate) * this.scale;
+				this.height = this.image.height * this.scale;
+				this.loaded = true;
+				resolve();
+			};
+		});
 	}
 
 	updateImgSource({ imageSrc, scale, frameRate, frameBuffer }) {
@@ -22,17 +29,10 @@ class Sprite {
 		this.currentFrame = 0;
 		this.elapsedFrames = 0;
 		this.scale = scale;
-		this.image = new Image();
-		this.image.src = imageSrc;
-		this.image.onload = () => {
-			this.width = (this.image.width / this.frameRate) * this.scale;
-			this.height = this.image.height * this.scale;
-			this.loaded = true;
-		};
-		this.image.src = imageSrc;
 		this.frameRate = frameRate;
-
 		this.frameBuffer = frameBuffer;
+
+		return this.loadImage(imageSrc);
 	}
 
 	draw() {
