@@ -64,6 +64,36 @@ pickupCollisions2D.forEach((row, y) => {
 	});
 });
 
+// Traps
+const trapBlocks = [];
+// Check if trapTiles array is defined
+if (typeof trapTiles != 'undefined') {
+	const trapTiles2D = [];
+	for (let i = 0; i < trapTiles.length; i += 36) {
+		trapTiles2D.push(trapTiles.slice(i, i + 36));
+	}
+
+	trapTiles2D.forEach((row, y) => {
+		row.forEach((symbol, x) => {
+			//The trap image corresponds to the "symbol" of the trapTiles array
+			if (symbol != 0) {
+				trapBlocks.push(
+					new Trap({
+						position: {
+							x: x * 16,
+							y: y * 16,
+						},
+						imageSrc: `./img/traps/trap${symbol}.png`,
+						scale: 1,
+						symbol,
+					})
+				);
+			};
+		});
+	});
+};
+
+
 const gravity = 0.1;
 
 const player = new Player({
@@ -137,6 +167,21 @@ function animate() {
 
 	player.checkForHorizontalCanvasCollision();
 	player.update();
+
+	if (trapBlocks.length > 0) {
+		for (const trap of trapBlocks) {
+			trap.update();
+			if (collision({ object1: player.hitbox, object2: trap })) {
+				// Teleport  a player to spwnPoint and reset camera, if player hit the trap.
+				player.teleport({ position: player.spawnPoint });
+
+				camera.position.x = 0;
+				camera.position.y = -backgroundImageHeight + scaledCanvas.height;
+				break;
+			}
+		}
+	}
+	  
 
 	// TODO: change to switch statement
 	player.velocity.x = 0;

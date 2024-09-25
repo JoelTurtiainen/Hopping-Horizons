@@ -1,7 +1,8 @@
 class Player extends Sprite {
 	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, character }) {
 		super({ imageSrc: character.imageSrc, frameRate: character.frameRate, scale: character.scale });
-		this.position = position;
+		this.position = Object.create(position);
+    	this.spawnPoint = Object.create(position);
 		this.character = character;
 		this.frameBuffer = this.character.frameBuffer;
 		this.velocity = {
@@ -37,6 +38,10 @@ class Player extends Sprite {
 			coins: 0,
 			inventory: {},
 		};
+	}
+
+	teleport({position}) {
+		this.position = Object.create(position);
 	}
 
 	getPosition() {
