@@ -58,12 +58,14 @@ class Player extends Sprite {
 		const currentPosition = { x: this.position.x, y: this.position.y + this.character.hitbox.y };
 		const currentImageSize = { width: this.width, height: this.height };
 
-		// Switch character
-		this.character = character;
-		await this.updateImgSource({ imageSrc: this.character.imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
-
 		// Load Animations
-		this.animations = this.loadAnimations(this.character.animations);
+		this.animations = this.loadAnimations(character.animations);
+
+		// Switch character
+		this.currentFrame = 0;
+		this.character = character;
+		const lastDir = this.lastDirection === 'left' ? 'IdleLeft' : 'Idle';
+		await this.updateImgSource({ imageSrc: this.animations[lastDir].imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
 
 		// Get new image size and calculate offset
 		const newImageSize = { width: this.width, height: this.height + this.character.hitbox.y };
@@ -144,8 +146,8 @@ class Player extends Sprite {
 		// c.strokeRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
 
 		// Visualize image bounding box
-		c.fillStyle = 'rgba(0, 255, 0, 0.1)';
-		c.fillRect(this.position.x, this.position.y, this.width, this.height);
+		// c.fillStyle = 'rgba(0, 255, 0, 0.1)';
+		// c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// Visualize hitbox bounding box
 		c.fillStyle = 'rgba(255, 0, 0, 0.2)';

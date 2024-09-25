@@ -98,8 +98,11 @@ const camera = {
 	},
 };
 
+let queueCharacterChange = false;
+
 function animate() {
 	window.requestAnimationFrame(animate);
+
 	c.save();
 	c.scale(4, 4);
 	c.translate(camera.position.x, camera.position.y);
@@ -122,6 +125,7 @@ function animate() {
 	player.checkForHorizontalCanvasCollision();
 	player.update();
 
+	// TODO: change to switch statement
 	player.velocity.x = 0;
 	if (keys.d.pressed) {
 		player.switchSprite('Run');
@@ -146,6 +150,11 @@ function animate() {
 		player.shouldPanCameraUp({ camera, canvas });
 		if (player.lastDirection === 'right') player.switchSprite('Fall');
 		else player.switchSprite('FallLeft');
+	}
+
+	if (queueCharacterChange) {
+		player.switchCharacter(queueCharacterChange);
+		queueCharacterChange = false;
 	}
 
 	c.restore();
@@ -179,20 +188,11 @@ window.addEventListener('keydown', (event) => {
 			player.velocity.y = -3.25;
 			break;
 		case 'q':
-			player.switchCharacter(characterOne);
+			queueCharacterChange = characterOne;
 			break;
 		case 'e':
-			player.switchCharacter(characterTwo);
+			queueCharacterChange = characterTwo;
 			break;
-		// case '3':
-		// 	player.switchCharacter({
-		// 		imageSrc: characterTwo.imageSrc,
-		// 		scale: characterTwo.scale,
-		// 		frameRate: characterTwo.frameRate,
-		// 		frameBuffer: characterTwo.frameBuffer,
-		// 		animations: characterTwo.animations,
-		// 	});
-		// 	break;
 	}
 });
 
