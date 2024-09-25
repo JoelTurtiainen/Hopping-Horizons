@@ -200,7 +200,9 @@ window.addEventListener('keydown', (event) => {
 			keys.a.pressed = true;
 			break;
 		case 'w':
-			player.velocity.y = -3.25;
+			if (!event.repeat && player.velocity.y === 0) {
+				player.velocity.y = -3.25;
+			}
 			break;
 		case 'q':
 			queueCharacterChange = characterOne;
