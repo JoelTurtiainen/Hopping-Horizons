@@ -88,13 +88,12 @@ if (typeof trapTiles != 'undefined') {
 						symbol,
 					})
 				);
-			};
+			}
 		});
 	});
-};
+}
 
-
-const gravity = 0.1;
+let gravity = 0.1;
 
 const player = new Player({
 	position: {
@@ -181,18 +180,17 @@ function animate() {
 			}
 		}
 	}
-	  
 
 	// TODO: change to switch statement
 	player.velocity.x = 0;
 	if (keys.d.pressed) {
 		player.switchSprite('Run');
-		player.velocity.x = 2;
+		player.velocity.x = 1.5;
 		player.lastDirection = 'right';
 		player.shouldPanCameraToTheLeft({ canvas, camera });
 	} else if (keys.a.pressed) {
 		player.switchSprite('RunLeft');
-		player.velocity.x = -2;
+		player.velocity.x = -1.5;
 		player.lastDirection = 'left';
 		player.shouldPanCameraToTheRight({ canvas, camera });
 	} else if (player.velocity.y === 0) {
@@ -254,6 +252,12 @@ window.addEventListener('keydown', (event) => {
 			break;
 		case 'e':
 			queueCharacterChange = characterTwo;
+			break;
+		case 'r':
+			queueCharacterChange = characterThree;
+			break;
+		case 't':
+			queueCharacterChange = characterFour;
 			break;
 	}
 });

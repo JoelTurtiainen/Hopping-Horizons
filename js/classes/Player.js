@@ -2,7 +2,7 @@ class Player extends Sprite {
 	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, character }) {
 		super({ imageSrc: character.imageSrc, frameRate: character.frameRate, scale: character.scale });
 		this.position = Object.create(position);
-    	this.spawnPoint = Object.create(position);
+		this.spawnPoint = Object.create(position);
 		this.character = character;
 		this.frameBuffer = this.character.frameBuffer;
 		this.velocity = {
@@ -40,7 +40,7 @@ class Player extends Sprite {
 		};
 	}
 
-	teleport({position}) {
+	teleport({ position }) {
 		this.position = Object.create(position);
 	}
 
@@ -60,7 +60,8 @@ class Player extends Sprite {
 
 	async switchCharacter(character) {
 		// Store the current position & Image Size
-		const currentPosition = { x: this.position.x, y: this.position.y + this.character.hitbox.y };
+		const currentPosition = { x: this.position.x, y: this.position.y };
+		const hitboxYBottom = this.hitbox.position.y + this.hitbox.height;
 		const currentImageSize = { width: this.width, height: this.height };
 
 		// Load Animations
@@ -73,11 +74,13 @@ class Player extends Sprite {
 		await this.updateImgSource({ imageSrc: this.animations[lastDir].imageSrc, scale: this.character.scale, frameRate: this.character.frameRate, frameBuffer: this.character.frameBuffer });
 
 		// Get new image size and calculate offset
-		const newImageSize = { width: this.width, height: this.height + this.character.hitbox.y };
-		const offset = { x: (currentImageSize.width - newImageSize.width) / 2, y: currentImageSize.height - newImageSize.height };
+		const offsetX = (currentImageSize.width - this.width) / 2;
+
+		// Calculate the new Y position relative to the hitbox's bottom
+		const newYPosition = hitboxYBottom - this.character.hitbox.height;
 
 		// Reapply the stored position with the offset
-		this.position = { x: currentPosition.x + offset.x, y: currentPosition.y + offset.y };
+		this.position = { x: currentPosition.x + offsetX, y: newYPosition - this.character.hitbox.y };
 	}
 
 	switchSprite(key) {
@@ -151,8 +154,8 @@ class Player extends Sprite {
 		// c.strokeRect(this.camerabox.position.x, this.camerabox.position.y, this.camerabox.width, this.camerabox.height);
 
 		// Visualize image bounding box
-		// c.fillStyle = 'rgba(0, 255, 0, 0.1)';
-		// c.fillRect(this.position.x, this.position.y, this.width, this.height);
+		c.fillStyle = 'rgba(0, 255, 0, 0.1)';
+		c.fillRect(this.position.x, this.position.y, this.width, this.height);
 
 		// Visualize hitbox bounding box
 		c.fillStyle = 'rgba(255, 0, 0, 0.2)';
