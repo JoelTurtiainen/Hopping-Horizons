@@ -93,6 +93,24 @@ if (typeof trapTiles != 'undefined') {
 	});
 };
 
+const startEndCollisions2D = []
+for (let i = 0; i < startEndCollisions.length; i += 50) {
+    startEndCollisions2D.push(startEndCollisions.slice(i, i + 50))
+}
+
+const startEndCollisionBlocks = []
+startEndCollisions2D.forEach((row, y) => {
+    row.forEach((symbol, x) => {
+        if (symbol === 999) {
+            startEndCollisionBlocks.push(new CollisionBlock({
+                position: {
+                    x: x * 16,
+                    y: y * 16,
+                }
+            }))
+        }
+    })
+})
 
 const gravity = 0.1;
 
@@ -104,6 +122,7 @@ const player = new Player({
 	collisionBlocks,
 	platformCollisionBlocks,
 	pickupCollisionBlocks,
+	startEndCollisionBlocks,
 	character: characterTwo,
 });
 
@@ -214,6 +233,7 @@ function animate() {
 		player.switchCharacter(queueCharacterChange);
 		queueCharacterChange = false;
 	}
+	player.checkForStartEndCollisions();
 
 	c.restore();
 
