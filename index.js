@@ -93,7 +93,7 @@ if (typeof trapTiles != 'undefined') {
 	});
 }
 
-let gravity = 0.1;
+const gravity = 0.1;
 
 const player = new Player({
 	position: {
@@ -103,6 +103,7 @@ const player = new Player({
 	collisionBlocks,
 	platformCollisionBlocks,
 	pickupCollisionBlocks,
+	startEndCollisionBlocks,
 	character: characterTwo,
 });
 
@@ -212,6 +213,7 @@ function animate() {
 		player.switchCharacter(queueCharacterChange);
 		queueCharacterChange = false;
 	}
+	player.checkForStartEndCollisions();
 
 	c.restore();
 

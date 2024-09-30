@@ -1,5 +1,5 @@
 class Player extends Sprite {
-	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, character }) {
+	constructor({ position, collisionBlocks, platformCollisionBlocks, pickupCollisionBlocks, startEndCollisionBlocks, character }) {
 		super({ imageSrc: character.imageSrc, frameRate: character.frameRate, scale: character.scale });
 		this.position = Object.create(position);
 		this.spawnPoint = Object.create(position);
@@ -12,6 +12,7 @@ class Player extends Sprite {
 		this.collisionBlocks = collisionBlocks;
 		this.platformCollisionBlocks = platformCollisionBlocks;
 		this.pickupCollisionBlocks = pickupCollisionBlocks;
+		this.startEndCollisionBlocks = startEndCollisionBlocks
 		this.hitbox = {
 			position: {
 				x: this.position.x,
@@ -169,6 +170,7 @@ class Player extends Sprite {
 		this.applyGravity();
 		this.updateHitbox();
 		this.checkForVerticalCollisions();
+		this.checkForStartEndCollisions()
 	}
 
 	updateHitbox() {
@@ -279,6 +281,23 @@ class Player extends Sprite {
 					this.position.y = platformCollisionBlock.position.y - offset - 0.01;
 					break;
 				}
+			}
+		}
+	}
+
+	checkForStartEndCollisions() {
+		for (let i = 0; i < this.startEndCollisionBlocks.length; i++) {
+			const startEndCollisionBlock = this.startEndCollisionBlocks[i];
+	
+			if (
+				collision({
+					object1: this.hitbox,
+					object2: startEndCollisionBlock,
+				})
+			) {
+				console.log('Hit start/end position');
+				// Handle start/end collision logic here
+				break;
 			}
 		}
 	}
