@@ -1,3 +1,5 @@
+let debug = true;
+
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
@@ -271,6 +273,8 @@ let levels = {
 	},
 };
 
+let inventory = {};
+
 const keys = {
 	w: {
 		pressed: false,
@@ -297,13 +301,16 @@ function animate() {
 	msPrev = msNow - excessTime;
 
 	background.draw();
-	collisionBlocks.forEach((collisionBlock) => {
-		collisionBlock.draw();
-	});
 
-	doors.forEach((door) => {
-		door.draw();
-	});
+	if (debug) {
+		collisionBlocks.forEach((collisionBlock) => {
+			collisionBlock.draw();
+		});
+
+		doors.forEach((door) => {
+			door.draw();
+		});
+	}
 
 	player.handleInput(keys);
 	player.draw();

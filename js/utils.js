@@ -20,6 +20,15 @@ Array.prototype.createObjectsFrom2D = function () {
 						},
 					})
 				);
+			} else if (symbol === 2) {
+				objects.push(
+					new ItemPickup({
+						position: {
+							x: x * 64,
+							y: y * 64,
+						},
+					})
+				);
 			} else if (symbol === 3) {
 				objects.push(
 					new TrapBlock({

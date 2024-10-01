@@ -20,14 +20,14 @@ class Player extends Sprite {
 	}
 
 	update() {
-		//c.fillStyle = 'rgba(0,0,255,0.3';
+		c.fillStyle = 'rgba(0,0,255,0.3';
 		// c.fillRect(this.position.x, this.position.y, this.width, this.height)
 		this.position.x += this.velocity.x;
 		this.updateHitBox();
 		this.checkForHorizontalCollisions();
 		this.applyGravity();
 		this.updateHitBox();
-		//c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+		c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
 		this.checkForVerticalCollisions();
 	}
 
@@ -64,7 +64,7 @@ class Player extends Sprite {
 				x: this.position.x + 60,
 				y: this.position.y + 35,
 			},
-			width: 40,
+			width: 35,
 			height: 53,
 		};
 	}
@@ -80,11 +80,19 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
+				if (collisionBlock instanceof ItemPickup) {
+					console.log('picking up item...');
+					this.collisionBlocks = this.collisionBlocks.filter((i) => i !== collisionBlock);
+					if (inventory[collisionBlock.name]) inventory[collisionBlock.name]++;
+					else inventory[collisionBlock.name] = 1;
+					continue;
+				}
+
 				if (collisionBlock instanceof TrapBlock) {
 					this.preventInput = true;
 					this.switchSprite('hurt');
-					continue;
 				}
+
 				if (this.velocity.x < -0) {
 					const offset = this.hitbox.position.x - this.position.x;
 					this.position.x = collisionBlock.position.x + collisionBlock.width - offset + 0.01;
@@ -117,11 +125,19 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
+				if (collisionBlock instanceof ItemPickup) {
+					console.log('picking up item...');
+					this.collisionBlocks = this.collisionBlocks.filter((i) => i !== collisionBlock);
+					if (inventory[collisionBlock.name]) inventory[collisionBlock.name]++;
+					else inventory[collisionBlock.name] = 1;
+					continue;
+				}
+
 				if (collisionBlock instanceof TrapBlock) {
 					this.preventInput = true;
 					this.switchSprite('hurt');
-					continue;
 				}
+
 				if (this.velocity.y < -0) {
 					this.velocity.y = 0;
 					const offset = this.hitbox.position.y - this.position.y;

@@ -1,27 +1,39 @@
 class CollisionBlock {
-	constructor({ position }) {
+	constructor({ position }, width = 64, height = 64) {
 		this.position = position;
-		this.width = 64;
-		this.height = 64;
+		this.width = width;
+		this.height = height;
+
+		if (debug) this.fillStyle = 'rgba(255,0,0,0.5)';
 	}
 
 	draw() {
-		c.fillStyle = 'rgba(255,0,0,0.5)';
+		c.fillStyle = this.fillStyle;
 		c.fillRect(this.position.x, this.position.y, this.width, this.height);
 	}
 }
 
-class TrapBlock {
+class ItemPickup extends CollisionBlock {
 	constructor({ position }) {
-		this.position = position;
-		this.position.x += 8;
-		this.position.y += 32;
-		this.width = 48;
-		this.height = 32;
-	}
+		super({ position });
+		this.name = 'test_item';
+		this.position.x += 16;
+		this.position.y += 16;
+		this.width = this.width / 2;
+		this.height = this.height / 2;
 
-	draw() {
-		c.fillStyle = 'rgba(255,255,0,0.5)';
-		c.fillRect(this.position.x, this.position.y, this.width, this.height);
+		if (debug) this.fillStyle = 'rgba(0,255,255,0.5)';
+	}
+}
+
+class TrapBlock extends CollisionBlock {
+	constructor({ position }) {
+		super({ position });
+		this.position.x += 16;
+		this.position.y += 32;
+		this.width = this.width / 2;
+		this.height -= this.height / 2;
+
+		if (debug) this.fillStyle = 'rgba(255,255,0,0.5)';
 	}
 }
