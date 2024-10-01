@@ -80,6 +80,11 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
+				if (collisionBlock instanceof TrapBlock) {
+					this.preventInput = true;
+					this.switchSprite('hurt');
+					continue;
+				}
 				if (this.velocity.x < -0) {
 					const offset = this.hitbox.position.x - this.position.x;
 					this.position.x = collisionBlock.position.x + collisionBlock.width - offset + 0.01;
@@ -112,6 +117,11 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
+				if (collisionBlock instanceof TrapBlock) {
+					this.preventInput = true;
+					this.switchSprite('hurt');
+					continue;
+				}
 				if (this.velocity.y < -0) {
 					this.velocity.y = 0;
 					const offset = this.hitbox.position.y - this.position.y;

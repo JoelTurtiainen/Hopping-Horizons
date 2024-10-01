@@ -9,7 +9,8 @@ let frames = 0;
 canvas.width = 1024;
 canvas.height = 576;
 
-let parsedCollsions;
+let parsedCollisions;
+let parsedTraps;
 let collisionBlocks;
 let background;
 let doors;
@@ -114,6 +115,25 @@ const player = new Player({
 				});
 			},
 		},
+		hurt: {
+			frameRate: 7,
+			frameBuffer: 5,
+			loop: false,
+			imageSrc: './img/bunny/hurt.png',
+			onComplete: () => {
+				gsap.to(overlay, {
+					opacity: 1,
+					onComplete: () => {
+						levels[level].init();
+						player.switchSprite('hurt');
+						player.preventInput = false;
+						gsap.to(overlay, {
+							opacity: 0,
+						});
+					},
+				});
+			},
+		},
 	},
 });
 
@@ -121,8 +141,8 @@ let level = 4;
 let levels = {
 	1: {
 		init: function () {
-			parsedCollsions = collisionLevel1.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel1.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			player.collisionBlocks = collisionBlocks;
 
 			if (player.currentAnimation) player.currentAnimation.isActive = false;
@@ -152,8 +172,8 @@ let levels = {
 	},
 	2: {
 		init: function () {
-			parsedCollsions = collisionLevel2.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel2.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 96;
 			player.position.y = 140;
@@ -185,8 +205,8 @@ let levels = {
 	},
 	3: {
 		init: function () {
-			parsedCollsions = collisionLevel3.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel3.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 760;
 			player.position.y = 210;
@@ -218,8 +238,8 @@ let levels = {
 	},
 	4: {
 		init: function () {
-			parsedCollsions = collisionLevel4.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel4.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 300;
 			player.position.y = 100;
@@ -277,9 +297,9 @@ function animate() {
 	msPrev = msNow - excessTime;
 
 	background.draw();
-	// collisionBlocks.forEach(collisionBlock => {
-	//     collisionBlock.draw()
-	// })
+	collisionBlocks.forEach((collisionBlock) => {
+		collisionBlock.draw();
+	});
 
 	doors.forEach((door) => {
 		door.draw();
