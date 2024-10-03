@@ -256,6 +256,111 @@ let levels = {
 			];
 		},
 	},
+	6: {
+        init: function () {
+            parsedCollsions = collisionLevel6.parse2D()
+            collisionBlocks = parsedCollsions.createObjectsFrom2D()
+            player.collisionBlocks = collisionBlocks
+            player.position.x = 100
+            player.position.y = 500
+
+            if (player.currentAnimation)
+                player.currentAnimation.isActive = false
+
+            background = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0
+                },
+                imageSrc: './img/backgroundLevel6.png'
+            })
+
+            doors = [
+                new Sprite({
+                    position: {
+                        x: 670,
+                        y: 80,
+                    },
+                    imageSrc: './img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 7,
+                    loop: false,
+                    autoplay: false
+                })
+            ]
+
+        }
+    },
+    7: {
+        init: function () {
+            parsedCollsions = collisionLevel7.parse2D();
+            collisionBlocks = parsedCollsions.createObjectsFrom2D();
+            player.collisionBlocks = collisionBlocks
+            player.position.x = 350;
+            player.position.y = 64;
+
+            if (player.currentAnimation)
+                player.currentAnimation.isActive = false;
+
+            background = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0
+                },
+                imageSrc: './img/backgroundLevel7.png'
+            });
+
+            doors = [
+                new Sprite({
+                    position: {
+                        x: 32,
+                        y: 400,
+                    },
+                    imageSrc: './img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 7,
+                    loop: false,
+                    autoplay: false
+                })
+            ];
+
+        }
+    },
+	8: {
+        init: function () {
+            parsedCollsions = collisionLevel8.parse2D();
+            collisionBlocks = parsedCollsions.createObjectsFrom2D();
+            player.collisionBlocks = collisionBlocks;
+            player.position.x = 100;
+            player.position.y = 500;
+
+            if (player.currentAnimation)
+                player.currentAnimation.isActive = false;
+
+            background = new Sprite({
+                position: {
+                    x: 0,
+                    y: 0
+                },
+                imageSrc: './img/backgroundLevel8.png'
+            });
+
+            doors = [
+                new Sprite({
+                    position: {
+                        x: 860,
+                        y: 400,
+                    },
+                    imageSrc: './img/doorOpen.png',
+                    frameRate: 5,
+                    frameBuffer: 7,
+                    loop: false,
+                    autoplay: false
+                })
+            ];
+
+        }
+    },
 };
 
 const keys = {
