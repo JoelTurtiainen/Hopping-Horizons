@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map1.tmx",
+    "activeFile": "map2.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -54,7 +54,7 @@
             "selectedLayer": 3,
             "viewCenter": {
                 "x": 506.5,
-                "y": 403.5
+                "y": 402.5
             }
         },
         "spikes.tsx": {
@@ -100,12 +100,12 @@
     ],
     "project": "ryhmatyo.tiled-project",
     "recentFiles": [
+        "map1.tmx",
         "cannon.tsx",
         "coin_small_gold.tsx",
         "tileset_snow.tsx",
         "map3.tmx",
         "map2.tmx",
-        "map1.tmx",
         "tileset_dirt.tsx",
         "crate.tsx",
         "collision.tsx",

@@ -1,4 +1,4 @@
-let debug = false;
+let debug = true;
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');

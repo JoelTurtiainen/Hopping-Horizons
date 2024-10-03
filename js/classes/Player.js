@@ -1,6 +1,8 @@
 class Player extends Sprite {
 	constructor({ collisionBlocks = [], imageSrc, frameRate, animations, loop }) {
 		super({ imageSrc, frameRate, animations, loop });
+		this.friction = 0.35;
+		this.maxSpeed = 5;
 		this.position = {
 			x: 200,
 			y: 200,
@@ -14,7 +16,7 @@ class Player extends Sprite {
 		this.sides = {
 			bottom: this.position.y + this.height,
 		};
-		this.gravity = 1;
+		this.gravity = 0.35;
 
 		this.collisionBlocks = collisionBlocks;
 	}
@@ -35,16 +37,21 @@ class Player extends Sprite {
 
 	handleInput(keys) {
 		if (this.preventInput) return;
-		this.velocity.x = 0;
 		if (keys.d.pressed) {
 			this.switchSprite('runRight');
-			this.velocity.x = 5;
+			if (this.velocity.x < this.maxSpeed) {
+				this.velocity.x++;
+			}
 			this.lastDirection = 'right';
 		} else if (keys.a.pressed) {
 			this.switchSprite('runLeft');
-			this.velocity.x = -5;
+			if (this.velocity.x > -this.maxSpeed) {
+				this.velocity.x--;
+			}
 			this.lastDirection = 'left';
 		} else {
+			if (this.velocity.y === 0) this.velocity.x *= this.friction;
+			else this.velocity.x *= 0.95;
 			if (this.lastDirection === 'left') this.switchSprite('idleLeft');
 			else this.switchSprite('idleRight');
 		}
