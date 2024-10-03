@@ -1,5 +1,5 @@
 class CollisionBlock {
-	constructor({ position }, width = 64, height = 64) {
+	constructor({ position, width = 64, height = 64 }) {
 		this.position = position;
 		this.width = width;
 		this.height = height;
@@ -13,7 +13,7 @@ class CollisionBlock {
 	}
 }
 
-class ItemPickup extends CollisionBlock {
+class CollectableBlock extends CollisionBlock {
 	constructor({ position }) {
 		super({ position });
 		this.name = 'test_item';

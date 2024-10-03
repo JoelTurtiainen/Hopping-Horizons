@@ -16,57 +16,8 @@ let parsedTraps;
 let collisionBlocks;
 let background;
 let doors;
-// const player = new Player({
-// 	imageSrc: './img/king/idle.png',
-// 	frameRate: 11,
-// 	animations: {
-// 		idleRight: {
-// 			frameRate: 11,
-// 			frameBuffer: 2,
-// 			loop: true,
-// 			imageSrc: './img/king/idle.png',
-// 		},
-// 		idleLeft: {
-// 			frameRate: 11,
-// 			frameBuffer: 2,
-// 			loop: true,
-// 			imageSrc: './img/king/idleLeft.png',
-// 		},
-// 		runRight: {
-// 			frameRate: 8,
-// 			frameBuffer: 4,
-// 			loop: true,
-// 			imageSrc: './img/king/runRight.png',
-// 		},
-// 		runLeft: {
-// 			frameRate: 8,
-// 			frameBuffer: 4,
-// 			loop: true,
-// 			imageSrc: './img/king/runLeft.png',
-// 		},
-// 		enterDoor: {
-// 			frameRate: 8,
-// 			frameBuffer: 4,
-// 			loop: false,
-// 			imageSrc: './img/king/enterDoor.png',
-// 			onComplete: () => {
-// 				gsap.to(overlay, {
-// 					opacity: 1,
-// 					onComplete: () => {
-// 						level++;
-// 						if (level === 4) level = 1;
-// 						levels[level].init();
-// 						player.switchSprite('idleRight');
-// 						player.preventInput = false;
-// 						gsap.to(overlay, {
-// 							opacity: 0,
-// 						});
-// 					},
-// 				});
-// 			},
-// 		},
-// 	},
-// });
+let entities;
+let inventory = {};
 
 const player = new Player({
 	imageSrc: './img/bunny/idle.png',
@@ -106,7 +57,7 @@ const player = new Player({
 					opacity: 1,
 					onComplete: () => {
 						level++;
-						if (level === 4) level = 1;
+						if (level === 5) level = 4;
 						levels[level].init();
 						player.switchSprite('idleRight');
 						player.preventInput = false;
@@ -242,6 +193,7 @@ let levels = {
 		init: function () {
 			parsedCollisions = collisionLevel4.parse2D();
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			entities = entitiesLevel4.createEntityArrayFromObject();
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 300;
 			player.position.y = 100;
@@ -271,9 +223,40 @@ let levels = {
 			];
 		},
 	},
-};
+	5: {
+		init: function () {
+			parsedCollisions = collisionLevel5.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			player.collisionBlocks = collisionBlocks;
+			player.position.x = 50;
+			player.position.y = 100;
 
-let inventory = {};
+			if (player.currentAnimation) player.currentAnimation.isActive = false;
+
+			background = new Sprite({
+				position: {
+					x: 0,
+					y: 0,
+				},
+				imageSrc: './img/backgroundLevel5.png',
+			});
+
+			doors = [
+				new Sprite({
+					position: {
+						x: 855,
+						y: 336,
+					},
+					imageSrc: './img/doorOpen.png',
+					frameRate: 5,
+					frameBuffer: 7,
+					loop: false,
+					autoplay: false,
+				}),
+			];
+		},
+	},
+};
 
 const keys = {
 	w: {
@@ -306,15 +289,27 @@ function animate() {
 		collisionBlocks.forEach((collisionBlock) => {
 			collisionBlock.draw();
 		});
-
-		doors.forEach((door) => {
-			door.draw();
-		});
 	}
+
+	doors.forEach((door) => {
+		door.draw();
+	});
 
 	player.handleInput(keys);
 	player.draw();
 	player.update();
+
+	const collidedEntity = player.checkForEntityCollision(entities);
+	if (collidedEntity) {
+		console.log(collidedEntity);
+		entities = entities.filter((i) => i !== collidedEntity);
+		if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
+		else inventory[collidedEntity.name] = 1;
+	}
+
+	entities.forEach((entity) => {
+		entity.draw();
+	});
 
 	c.save();
 	c.globalAlpha = overlay.opacity;

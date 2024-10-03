@@ -1,0 +1,120 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map1.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "cannon.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "coin_small_gold.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "collision.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "crate.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "lava.tsx": {
+            "scaleInDock": 1
+        },
+        "map1.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 512,
+                "y": 287.5
+            }
+        },
+        "map2.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 426,
+                "y": 288.66666666666663
+            }
+        },
+        "map3.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 466,
+                "y": 288.5
+            }
+        },
+        "spikes.tsx": {
+            "scaleInDock": 1
+        },
+        "tileset_dirt.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 3
+        },
+        "tileset_lava.tsx": {
+            "scaleInDock": 3
+        },
+        "tileset_snow.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 4,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 143,
+                "y": 63.875
+            }
+        }
+    },
+    "last.exportedFilePath": "/home/jole/Downloads/vertical-platformer/src",
+    "last.externalTilesetPath": "/home/jole/Projects/Tiled/ryhmatyo",
+    "last.imagePath": "/home/jole/Downloads/vertical-platformer/src",
+    "last.objectTemplatePath": "/home/jole/Downloads/vertical-platformer/src",
+    "map.height": 9,
+    "map.lastUsedExportFilter": "JavaScript map files (*.js)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 16,
+    "openFiles": [
+        "map1.tmx",
+        "map2.tmx",
+        "map3.tmx",
+        "tileset_snow.tsx",
+        "coin_small_gold.tsx",
+        "cannon.tsx"
+    ],
+    "project": "ryhmatyo.tiled-project",
+    "recentFiles": [
+        "cannon.tsx",
+        "coin_small_gold.tsx",
+        "tileset_snow.tsx",
+        "map3.tmx",
+        "map2.tmx",
+        "map1.tmx",
+        "tileset_dirt.tsx",
+        "crate.tsx",
+        "collision.tsx",
+        "untitled.tmx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

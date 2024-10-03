@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" nextlayerid="10" nextobjectid="1">
+ <editorsettings>
+  <export target="map2.js" format="js"/>
+ </editorsettings>
+ <tileset firstgid="1" source="tileset_dirt.tsx"/>
+ <tileset firstgid="73" source="spikes.tsx"/>
+ <tileset firstgid="77" source="lava.tsx"/>
+ <tileset firstgid="85" source="tileset_lava.tsx"/>
+ <tileset firstgid="190" source="collision.tsx"/>
+ <tileset firstgid="194" source="coin_small_gold.tsx"/>
+ <imagelayer id="8" name="Background Color" tintcolor="#5e4661">
+  <image source="Rocky Roads/Backgrounds/4x/white.png" width="1024" height="576"/>
+ </imagelayer>
+ <imagelayer id="5" name="Mountains">
+  <image source="Rocky Roads/Backgrounds/4x/mountains_b.png" width="1024" height="576"/>
+ </imagelayer>
+ <layer id="2" name="lava" width="16" height="9">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+77,78,79,80,81,82,83,84,78,77,78,79,80,81,82,83
+</data>
+ </layer>
+ <layer id="6" name="secondary" width="16" height="9">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+106,0,0,0,0,0,0,0,0,0,0,0,0,0,0,107,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="main" width="16" height="9">
+  <data encoding="csv">
+2684354679,147,148,149,147,147,148,149,147,148,149,147,148,149,147,3221225591,
+2147483779,0,0,0,0,0,0,0,0,0,0,0,0,0,0,131,
+135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483783,
+2147483779,0,0,0,0,0,0,109,0,0,0,0,0,0,0,131,
+135,112,113,0,109,0,0,0,0,0,109,0,0,111,112,131,
+2147483779,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2147483783,
+135,0,0,0,0,0,0,0,0,0,0,0,0,0,0,131,
+2147483779,0,0,0,0,109,0,0,0,0,0,0,0,116,103,117,
+119,103,104,0,0,0,0,116,120,0,116,120,0,131,133,133
+</data>
+ </layer>
+ <layer id="7" name="collision" width="16" height="9" opacity="0.32">
+  <data encoding="csv">
+0,190,190,190,190,190,190,190,190,190,190,190,190,190,190,0,
+190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,190,
+190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,190,
+190,0,0,0,0,0,0,193,0,0,0,0,0,0,0,190,
+190,193,193,0,193,0,0,0,0,0,193,0,0,193,193,190,
+190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,190,
+190,0,0,0,0,0,0,0,0,0,0,0,0,0,0,190,
+190,0,0,0,0,193,0,0,0,0,0,0,0,190,190,0,
+0,190,190,192,192,192,192,190,190,192,190,190,192,190,0,0
+</data>
+ </layer>
+ <objectgroup id="9" name="Collectable"/>
+</map>

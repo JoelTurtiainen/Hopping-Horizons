@@ -20,15 +20,17 @@ class Player extends Sprite {
 	}
 
 	update() {
-		c.fillStyle = 'rgba(0,0,255,0.3';
-		// c.fillRect(this.position.x, this.position.y, this.width, this.height)
 		this.position.x += this.velocity.x;
 		this.updateHitBox();
 		this.checkForHorizontalCollisions();
 		this.applyGravity();
 		this.updateHitBox();
-		c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
 		this.checkForVerticalCollisions();
+		if (debug) {
+			c.fillStyle = 'rgba(0,0,255,0.3';
+			// c.fillRect(this.position.x, this.position.y, this.width, this.height)
+			c.fillRect(this.hitbox.position.x, this.hitbox.position.y, this.hitbox.width, this.hitbox.height);
+		}
 	}
 
 	handleInput(keys) {
@@ -80,16 +82,9 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
-				if (collisionBlock instanceof ItemPickup) {
-					console.log('picking up item...');
-					this.collisionBlocks = this.collisionBlocks.filter((i) => i !== collisionBlock);
-					if (inventory[collisionBlock.name]) inventory[collisionBlock.name]++;
-					else inventory[collisionBlock.name] = 1;
-					continue;
-				}
-
 				if (collisionBlock instanceof TrapBlock) {
 					this.preventInput = true;
+					this.velocity.x = 0;
 					this.switchSprite('hurt');
 				}
 
@@ -125,16 +120,9 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= collisionBlock.position.y &&
 				this.hitbox.position.y <= collisionBlock.position.y + collisionBlock.height
 			) {
-				if (collisionBlock instanceof ItemPickup) {
-					console.log('picking up item...');
-					this.collisionBlocks = this.collisionBlocks.filter((i) => i !== collisionBlock);
-					if (inventory[collisionBlock.name]) inventory[collisionBlock.name]++;
-					else inventory[collisionBlock.name] = 1;
-					continue;
-				}
-
 				if (collisionBlock instanceof TrapBlock) {
 					this.preventInput = true;
+					this.velocity.x = 0;
 					this.switchSprite('hurt');
 				}
 
@@ -153,5 +141,14 @@ class Player extends Sprite {
 				}
 			}
 		}
+	}
+	checkForEntityCollision(entities) {
+		return entities.find(
+			(entity) =>
+				this.hitbox.position.x <= entity.position.x + entity.width &&
+				this.hitbox.position.x + this.hitbox.width >= entity.position.x &&
+				this.hitbox.position.y + this.hitbox.height >= entity.position.y &&
+				this.hitbox.position.y <= entity.position.y + entity.height
+		);
 	}
 }
