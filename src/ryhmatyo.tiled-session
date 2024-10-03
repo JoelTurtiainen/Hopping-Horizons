@@ -37,24 +37,24 @@
             "scale": 1,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 512,
-                "y": 287.5
+                "x": 512.5,
+                "y": 402.5
             }
         },
         "map2.tmx": {
             "scale": 0.75,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 426,
-                "y": 288.66666666666663
+                "x": 497.9999999999999,
+                "y": 367.3333333333333
             }
         },
         "map3.tmx": {
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 466,
-                "y": 288.5
+                "x": 506.5,
+                "y": 403.5
             }
         },
         "spikes.tsx": {

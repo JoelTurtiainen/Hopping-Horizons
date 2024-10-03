@@ -1,4 +1,4 @@
-let debug = true;
+let debug = false;
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -299,17 +299,19 @@ function animate() {
 	player.draw();
 	player.update();
 
-	const collidedEntity = player.checkForEntityCollision(entities);
-	if (collidedEntity) {
-		console.log(collidedEntity);
-		entities = entities.filter((i) => i !== collidedEntity);
-		if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
-		else inventory[collidedEntity.name] = 1;
-	}
+	if (entities) {
+		const collidedEntity = player.checkForEntityCollision(entities);
+		if (collidedEntity) {
+			console.log(collidedEntity);
+			entities = entities.filter((i) => i !== collidedEntity);
+			if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
+			else inventory[collidedEntity.name] = 1;
+		}
 
-	entities.forEach((entity) => {
-		entity.draw();
-	});
+		entities.forEach((entity) => {
+			entity.draw();
+		});
+	}
 
 	c.save();
 	c.globalAlpha = overlay.opacity;
