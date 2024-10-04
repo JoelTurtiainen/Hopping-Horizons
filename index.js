@@ -91,7 +91,7 @@ const player = new Player({
 	},
 });
 
-let level = 1;
+let level = 4;
 let levels = {
 	1: {
 		init: function () {
@@ -166,12 +166,12 @@ let levels = {
 	3: {
 		init: function () {
 			parsedCollisions = collisionLevel3.parse2D();
-			entities = [];
+			entities = entitiesLevel3.createEntityArrayFromObject();
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 100;
-			player.position.y = 500;
+			player.position.y = 350;
 
 			if (player.currentAnimation) player.currentAnimation.isActive = false;
 
@@ -201,9 +201,19 @@ let levels = {
 	4: {
 		init: function () {
 			parsedCollisions = collisionLevel4.parse2D();
-			entities = [];
+			entities = entitiesLevel4.createEntityArrayFromObject();
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			if (entities.solid) collisionBlocks.push(...entities.solid);
+			player.collisionBlocks = collisionBlocks;
+			player.position.x = 350;
+			player.position.y = 64;
+		},
+	},
+	4: {
+		init: function () {
+			parsedCollsions = collisionLevel4.parse2D();
+			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			entities = entitiesLevel4.createEntityArrayFromObject();
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 350;
 			player.position.y = 64;
@@ -236,7 +246,7 @@ let levels = {
 	5: {
 		init: function () {
 			parsedCollisions = collisionLevel5.parse2D();
-			entities = [];
+			entities = entitiesLevel5.createEntityArrayFromObject();
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;

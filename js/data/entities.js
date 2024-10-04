@@ -110,3 +110,88 @@ const entitiesLevel1 = [
 		y: 336,
 	},
 ];
+
+const entitiesLevel3 = [
+	{
+		template: 'coin_small_gold.tx',
+		x: 355,
+		y: 285,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 395,
+		y: 285,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 610,
+		y: 410,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 650,
+		y: 410,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 400,
+		y: 540,
+	},
+];
+
+const entitiesLevel4 = [
+	{
+		template: 'coin_small_gold.tx',
+		x: 525,
+		y: 330,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 912,
+		y: 270,
+	},
+	
+];
+
+const entitiesLevel5 = [
+	{
+		template: 'coin_small_gold.tx',
+		x: 525,
+		y: 400,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 840,
+		y: 208,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 130,
+		y: 290,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 160,
+		y: 290,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 190,
+		y: 290,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 220,
+		y: 290,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 250,
+		y: 290,
+	},
+	{
+		template: 'coin_small_gold.tx',
+		x: 280,
+		y: 290,
+	},
+];
