@@ -16,7 +16,7 @@ const entityDat = {
 		scale: 2,
 	},
 };
-const entitiesLevel4 = [
+const entitiesLevel1 = [
 	{
 		id: 28,
 		template: 'coin_small_gold.tx',
