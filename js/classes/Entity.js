@@ -37,7 +37,4 @@ class Entity extends Sprite {
 
 		this.updateFrames();
 	}
-	delete() {
-		delete this;
-	}
 }
