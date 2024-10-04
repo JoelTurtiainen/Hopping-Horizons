@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map2.tmx",
+    "activeFile": "map1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -34,27 +34,27 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 1,
+            "scale": 2,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 512.5,
-                "y": 402.5
+                "x": 512,
+                "y": 287.75
             }
         },
         "map2.tmx": {
             "scale": 0.75,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 497.9999999999999,
-                "y": 367.3333333333333
+                "x": 426,
+                "y": 288.66666666666663
             }
         },
         "map3.tmx": {
             "scale": 1,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 506.5,
-                "y": 402.5
+                "x": 466,
+                "y": 288.5
             }
         },
         "spikes.tsx": {
@@ -96,18 +96,19 @@
         "map3.tmx",
         "tileset_snow.tsx",
         "coin_small_gold.tsx",
-        "cannon.tsx"
+        "cannon.tsx",
+        "crate.tsx"
     ],
     "project": "ryhmatyo.tiled-project",
     "recentFiles": [
-        "map1.tmx",
+        "crate.tsx",
         "cannon.tsx",
         "coin_small_gold.tsx",
         "tileset_snow.tsx",
         "map3.tmx",
         "map2.tmx",
+        "map1.tmx",
         "tileset_dirt.tsx",
-        "crate.tsx",
         "collision.tsx",
         "untitled.tmx"
     ],

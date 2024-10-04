@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#5e4661" nextlayerid="8" nextobjectid="46">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" backgroundcolor="#5e4661" nextlayerid="8" nextobjectid="65">
  <editorsettings>
   <chunksize width="64" height="64"/>
   <export target="map1.js" format="js"/>
  </editorsettings>
  <tileset firstgid="1" source="tileset_dirt.tsx"/>
- <tileset firstgid="73" source="crate.tsx"/>
- <tileset firstgid="89" source="spikes.tsx"/>
- <tileset firstgid="93" source="cannon.tsx"/>
- <tileset firstgid="99" source="collision.tsx"/>
- <tileset firstgid="103" source="coin_small_gold.tsx"/>
+ <tileset firstgid="73" source="spikes.tsx"/>
+ <tileset firstgid="77" source="cannon.tsx"/>
+ <tileset firstgid="83" source="collision.tsx"/>
+ <tileset firstgid="87" source="coin_small_gold.tsx"/>
+ <tileset firstgid="93" source="crate.tsx"/>
  <imagelayer id="7" name="BG Color" tintcolor="#5e4661">
   <image source="Rocky Roads/Backgrounds/4x/white.png" width="1024" height="576"/>
  </imagelayer>
@@ -38,30 +38,38 @@
 43,0,0,50,53,53,53,53,51,52,53,54,52,53,54,3221225502,
 43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,
 43,0,0,0,0,0,0,0,0,0,0,0,0,0,0,38,
-43,89,89,26,17,18,0,0,0,0,0,0,15,16,17,27,
+43,73,73,26,17,18,0,0,0,0,0,0,15,16,17,27,
 30,16,17,27,41,43,0,0,26,31,0,0,38,0,0,0
 </data>
  </layer>
  <layer id="5" name="collision" width="16" height="9" opacity="0.3">
   <data encoding="csv">
-0,99,99,99,99,99,99,0,0,0,0,0,0,0,0,0,
-99,0,0,0,0,0,0,99,0,0,0,0,0,0,0,0,
-99,0,0,0,0,0,0,99,0,0,0,0,0,0,0,0,
-99,0,0,99,99,99,99,0,0,0,0,0,0,0,0,0,
-99,0,0,99,99,99,99,99,99,99,99,99,99,99,99,0,
-99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,99,
-99,0,0,0,0,0,0,0,0,0,0,0,0,0,0,99,
-99,101,101,99,99,99,0,0,0,0,0,0,99,99,99,0,
-0,99,99,0,0,99,0,0,99,99,0,0,99,0,0,0
+0,83,83,83,83,83,83,0,0,0,0,0,0,0,0,0,
+83,0,0,0,0,0,0,83,0,0,0,0,0,0,0,0,
+83,0,0,0,0,0,0,83,0,0,0,0,0,0,0,0,
+83,0,0,83,83,83,83,0,0,0,0,0,0,0,0,0,
+83,0,0,83,83,83,83,83,83,83,83,83,83,83,83,0,
+83,0,0,0,0,0,0,0,0,0,0,0,0,0,0,83,
+83,0,0,0,0,0,0,0,0,0,0,0,0,0,0,83,
+83,85,85,83,83,83,0,0,0,0,0,0,83,83,83,0,
+0,83,83,0,0,83,0,0,83,83,0,0,83,0,0,0
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="14" name="Cannon" gid="97" x="733" y="500" width="64" height="64"/>
   <object id="28" template="coin_small_gold.tx" x="160" y="352"/>
   <object id="29" template="coin_small_gold.tx" x="352" y="448"/>
   <object id="30" template="coin_small_gold.tx" x="448" y="448"/>
   <object id="31" template="coin_small_gold.tx" x="512" y="512"/>
-  <object id="32" template="coin_small_gold.tx" x="784" y="448"/>
-  <object id="33" template="coin_small_gold.tx" x="864" y="448"/>
+  <object id="32" template="coin_small_gold.tx" x="736" y="416"/>
+  <object id="33" template="coin_small_gold.tx" x="784" y="448"/>
+  <object id="56" template="crate.tx" x="608" y="512"/>
+  <object id="57" template="coin_small_gold.tx" x="64" y="240"/>
+  <object id="58" template="coin_small_gold.tx" x="608" y="480"/>
+  <object id="59" template="coin_small_gold.tx" x="640" y="448"/>
+  <object id="60" template="coin_small_gold.tx" x="672" y="416"/>
+  <object id="61" template="coin_small_gold.tx" x="704" y="400"/>
+  <object id="62" template="coin_small_gold.tx" x="64" y="272"/>
+  <object id="63" template="coin_small_gold.tx" x="64" y="304"/>
+  <object id="64" template="coin_small_gold.tx" x="112" y="336"/>
  </objectgroup>
 </map>

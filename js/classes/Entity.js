@@ -1,40 +1,32 @@
 class Entity extends Sprite {
-	constructor({ position, imageSrc, frameRate, framebuffer, loop, autoplay, scale, name }) {
-		super({ position, imageSrc, frameRate, framebuffer, loop, autoplay });
+	constructor({ position, imageSrc, frameRate, frameBuffer, loop, autoplay, scale, type, name }) {
+		console.log(imageSrc);
+		super({ position, imageSrc, frameRate, frameBuffer, loop, autoplay, scale });
 		this.position = position;
-		this.position.y -= 64; // Tiled coordinates start from bottom left
-		this.scale = scale;
-		this.name = name;
+		this.position.y -= 16 * scale;
 
-		this.image.onload = () => {
-			this.loaded = true;
-			this.width = (this.image.width / this.frameRate) * this.scale;
-			this.height = this.image.height * this.scale;
-		};
+		this.name = name;
+		this.type = type;
 	}
 	draw() {
-		if (!this.loaded) return;
-		c.save();
-		c.translate(this.position.x, this.position.y);
-		c.scale(this.scale, this.scale);
-		c.drawImage(
-			this.image,
-			this.currentFrame * (this.image.width / this.frameRate),
-			0,
-			this.image.width / this.frameRate,
-			this.image.height,
-			0,
-			0,
-			this.image.width / this.frameRate,
-			this.image.height
-		);
-		c.restore();
-
 		if (debug) {
 			c.fillStyle = 'rgba(0,255,255,0.5)';
 			c.fillRect(this.position.x, this.position.y, this.width, this.height);
 		}
+		super.draw();
+	}
+}
 
-		this.updateFrames();
+class Crate extends Entity {
+	constructor(config) {
+		super(config);
+		// idk
+	}
+}
+
+class Coin extends Entity {
+	constructor(config) {
+		super(config);
+		// idk
 	}
 }

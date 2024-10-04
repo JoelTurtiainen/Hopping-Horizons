@@ -61,12 +61,25 @@ Array.prototype.createObjectsFrom2D = function () {
 };
 
 Array.prototype.createEntityArrayFromObject = function () {
-	const objects = [];
+	const objects = {
+		collectable: [],
+		solid: [],
+	};
 	this.forEach((entity) => {
 		const name = entity.template.split('.')[0];
-		const { imageSrc, frameRate, frameBuffer, loop, scale } = entityDat[name];
-		const position = { x: entity.x, y: entity.y };
-		objects.push(new Entity({ position, imageSrc, frameRate, frameBuffer, loop, scale, name }));
+		const config = {
+			position: { x: entity.x, y: entity.y },
+			...entityDat[name],
+		};
+
+		switch (config.type) {
+			case 'collectable':
+				objects[config.type].push(new Coin(config));
+				break;
+			case 'solid':
+				objects[config.type].push(new Crate(config));
+				break;
+		}
 	});
 	return objects;
 };

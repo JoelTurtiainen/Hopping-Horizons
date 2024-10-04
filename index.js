@@ -1,4 +1,4 @@
-let debug = false;
+let debug = true;
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -17,6 +17,7 @@ let collisionBlocks;
 let background;
 let doors;
 let entities;
+let collectables;
 let inventory = {};
 
 const player = new Player({
@@ -90,13 +91,14 @@ const player = new Player({
 	},
 });
 
-let level = 8;
+let level = 1;
 let levels = {
 	1: {
 		init: function () {
 			parsedCollisions = collisionLevel1.parse2D();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
 			entities = entitiesLevel1.createEntityArrayFromObject();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 300;
 			player.position.y = 100;
@@ -114,7 +116,7 @@ let levels = {
 			doors = [
 				new Sprite({
 					position: {
-						x: 772,
+						x: 850,
 						y: 336,
 					},
 					imageSrc: './img/doorOpen.png',
@@ -129,7 +131,9 @@ let levels = {
 	2: {
 		init: function () {
 			parsedCollisions = collisionLevel2.parse2D();
+			entities = [];
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 50;
 			player.position.y = 100;
@@ -161,8 +165,10 @@ let levels = {
 	},
 	3: {
 		init: function () {
-			parsedCollsions = collisionLevel3.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel3.parse2D();
+			entities = [];
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 100;
 			player.position.y = 500;
@@ -194,8 +200,10 @@ let levels = {
 	},
 	4: {
 		init: function () {
-			parsedCollsions = collisionLevel4.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel4.parse2D();
+			entities = [];
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 350;
 			player.position.y = 64;
@@ -227,8 +235,10 @@ let levels = {
 	},
 	5: {
 		init: function () {
-			parsedCollsions = collisionLevel5.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
+			parsedCollisions = collisionLevel5.parse2D();
+			entities = [];
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 100;
 			player.position.y = 500;
@@ -261,8 +271,9 @@ let levels = {
 	6: {
 		init: function () {
 			parsedCollisions = collisionLevel6.parse2D();
+			entities = [];
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			// entities = entitiesLevel6.createEntityArrayFromObject();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 87;
 			player.position.y = 481;
@@ -295,8 +306,9 @@ let levels = {
 	7: {
 		init: function () {
 			parsedCollisions = collisionLevel7.parse2D();
+			entities = [];
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			// entities = entitiesLevel7.createEntityArrayFromObject();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 148;
 			player.position.y = 165;
@@ -329,8 +341,9 @@ let levels = {
 	8: {
 		init: function () {
 			parsedCollisions = collisionLevel8.parse2D();
+			entities = [];
 			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			// entities = entitiesLevel8.createEntityArrayFromObject();
+			if (entities.solid) collisionBlocks.push(...entities.solid);
 			player.collisionBlocks = collisionBlocks;
 			player.position.x = 850;
 			player.position.y = 336;
@@ -403,17 +416,19 @@ function animate() {
 	player.draw();
 	player.update();
 
-	if (entities) {
-		const collidedEntity = player.checkForEntityCollision(entities);
+	if (entities.collectable) {
+		const collidedEntity = player.checkForEntityCollision(entities.collectable);
 		if (collidedEntity) {
 			console.log(collidedEntity);
-			entities = entities.filter((i) => i !== collidedEntity);
+			entities.collectable = entities.collectable.filter((i) => i !== collidedEntity);
 			if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
 			else inventory[collidedEntity.name] = 1;
 		}
 
-		entities.forEach((entity) => {
-			entity.draw();
+		Object.entries(entities).forEach(([key, value]) => {
+			value.forEach((entity) => {
+				entity.draw();
+			});
 		});
 	}
 

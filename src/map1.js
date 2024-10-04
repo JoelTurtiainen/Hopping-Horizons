@@ -70,7 +70,7 @@
             43, 0, 0, 50, 53, 53, 53, 53, 51, 52, 53, 54, 52, 53, 54, 3221225502,
             43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38,
             43, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 38,
-            43, 89, 89, 26, 17, 18, 0, 0, 0, 0, 0, 0, 15, 16, 17, 27,
+            43, 73, 73, 26, 17, 18, 0, 0, 0, 0, 0, 0, 15, 16, 17, 27,
             30, 16, 17, 27, 41, 43, 0, 0, 26, 31, 0, 0, 38, 0, 0, 0],
          "height":9,
          "id":2,
@@ -83,15 +83,15 @@
          "y":0
         }, 
         {
-         "data":[0, 99, 99, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            99, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0,
-            99, 0, 0, 0, 0, 0, 0, 99, 0, 0, 0, 0, 0, 0, 0, 0,
-            99, 0, 0, 99, 99, 99, 99, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            99, 0, 0, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 0,
-            99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99,
-            99, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99,
-            99, 101, 101, 99, 99, 99, 0, 0, 0, 0, 0, 0, 99, 99, 99, 0,
-            0, 99, 99, 0, 0, 99, 0, 0, 99, 99, 0, 0, 99, 0, 0, 0],
+         "data":[0, 83, 83, 83, 83, 83, 83, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            83, 0, 0, 0, 0, 0, 0, 83, 0, 0, 0, 0, 0, 0, 0, 0,
+            83, 0, 0, 0, 0, 0, 0, 83, 0, 0, 0, 0, 0, 0, 0, 0,
+            83, 0, 0, 83, 83, 83, 83, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            83, 0, 0, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 83, 0,
+            83, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 83,
+            83, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 83,
+            83, 85, 85, 83, 83, 83, 0, 0, 0, 0, 0, 0, 83, 83, 83, 0,
+            0, 83, 83, 0, 0, 83, 0, 0, 83, 83, 0, 0, 83, 0, 0, 0],
          "height":9,
          "id":5,
          "name":"collision",
@@ -134,20 +134,68 @@
                 {
                  "id":32,
                  "template":"coin_small_gold.tx",
-                 "x":784,
-                 "y":448
+                 "x":736,
+                 "y":416
                 }, 
                 {
                  "id":33,
                  "template":"coin_small_gold.tx",
-                 "x":864,
+                 "x":784,
                  "y":448
                 }, 
                 {
-                 "id":36,
-                 "template":"cannon_03.tx",
-                 "x":736,
-                 "y":496
+                 "id":56,
+                 "template":"crate.tx",
+                 "x":608,
+                 "y":512
+                }, 
+                {
+                 "id":57,
+                 "template":"coin_small_gold.tx",
+                 "x":64,
+                 "y":240
+                }, 
+                {
+                 "id":58,
+                 "template":"coin_small_gold.tx",
+                 "x":608,
+                 "y":480
+                }, 
+                {
+                 "id":59,
+                 "template":"coin_small_gold.tx",
+                 "x":640,
+                 "y":448
+                }, 
+                {
+                 "id":60,
+                 "template":"coin_small_gold.tx",
+                 "x":672,
+                 "y":416
+                }, 
+                {
+                 "id":61,
+                 "template":"coin_small_gold.tx",
+                 "x":704,
+                 "y":400
+                }, 
+                {
+                 "id":62,
+                 "template":"coin_small_gold.tx",
+                 "x":64,
+                 "y":272
+                }, 
+                {
+                 "id":63,
+                 "template":"coin_small_gold.tx",
+                 "x":64,
+                 "y":304
+                }, 
+                {
+                 "id":64,
+                 "template":"coin_small_gold.tx",
+                 "x":112,
+                 "y":336
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -156,7 +204,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":37,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.0",
@@ -177,28 +225,8 @@
          "tilewidth":16
         }, 
         {
-         "columns":8,
-         "firstgid":73,
-         "grid":
-            {
-             "height":32,
-             "orientation":"orthogonal",
-             "width":32
-            },
-         "image":"Rocky Roads\/Objects\/crate.png",
-         "imageheight":32,
-         "imagewidth":128,
-         "margin":0,
-         "name":"crate",
-         "spacing":0,
-         "tilecount":16,
-         "tileheight":16,
-         "tilerendersize":"grid",
-         "tilewidth":16
-        }, 
-        {
          "columns":4,
-         "firstgid":89,
+         "firstgid":73,
          "image":"Rocky Roads\/Enemies\/spikes.png",
          "imageheight":16,
          "imagewidth":64,
@@ -212,7 +240,7 @@
         }, 
         {
          "columns":3,
-         "firstgid":93,
+         "firstgid":77,
          "image":"Rocky Roads\/Enemies\/cannon.png",
          "imageheight":64,
          "imagewidth":96,
@@ -226,7 +254,7 @@
         }, 
         {
          "columns":2,
-         "firstgid":99,
+         "firstgid":83,
          "image":"collision.png",
          "imageheight":32,
          "imagewidth":32,
@@ -240,7 +268,7 @@
         }, 
         {
          "columns":6,
-         "firstgid":103,
+         "firstgid":87,
          "image":"Rocky Roads\/Objects\/coin_small_gold.png",
          "imageheight":16,
          "imagewidth":96,
@@ -279,6 +307,19 @@
                         }],
                  "id":0
                 }],
+         "tilewidth":16
+        }, 
+        {
+         "columns":1,
+         "firstgid":93,
+         "image":"..\/img\/entities\/crate.png",
+         "imageheight":16,
+         "imagewidth":16,
+         "margin":0,
+         "name":"crate",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":16,
          "tilewidth":16
         }],
  "tilewidth":64,

@@ -1,14 +1,15 @@
 class Sprite {
-	constructor({ position, imageSrc, frameRate = 1, animations, frameBuffer = 2, loop = true, autoplay = true }) {
+	constructor({ position, imageSrc, frameRate = 1, animations, frameBuffer = 2, loop = true, autoplay = true, scale = 1 }) {
 		this.position = position;
+		this.scale = scale;
+		this.loaded = false;
 		this.image = new Image();
 		this.image.onload = () => {
 			this.loaded = true;
-			this.width = this.image.width / this.frameRate;
-			this.height = this.image.height;
+			this.width = (this.image.width / this.frameRate) * this.scale;
+			this.height = this.image.height * this.scale;
 		};
 		this.image.src = imageSrc;
-		this.loaded = false;
 		this.frameRate = frameRate;
 		this.currentFrame = 0;
 		this.elapsedFrames = 0;
@@ -28,15 +29,21 @@ class Sprite {
 	}
 	draw() {
 		if (!this.loaded) return;
-		const cropbox = {
-			position: {
-				x: this.width * this.currentFrame,
-				y: 0,
-			},
-			width: this.width,
-			height: this.height,
-		};
-		c.drawImage(this.image, cropbox.position.x, cropbox.position.y, cropbox.width, cropbox.height, this.position.x, this.position.y, this.width, this.height);
+		c.save();
+		c.translate(this.position.x, this.position.y);
+		c.scale(this.scale, this.scale);
+		c.drawImage(
+			this.image,
+			this.currentFrame * (this.image.width / this.frameRate),
+			0,
+			this.image.width / this.frameRate,
+			this.image.height,
+			0,
+			0,
+			this.image.width / this.frameRate,
+			this.image.height
+		);
+		c.restore();
 		this.updateFrames();
 	}
 
