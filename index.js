@@ -113,7 +113,10 @@ const player = new Player({
 	},
 });
 
+let levels = parseMapData();
+
 let level = 4;
+/*
 let levels = {
 	0: {
 		init: function () {
@@ -475,6 +478,7 @@ let levels = {
 		},
 	},
 };
+*/
 
 const keys = {
 	w: {

@@ -42,7 +42,7 @@ class Ui {
     levelInfo(levelNumber) {
         c.font = `${this.fontSize}px serif`;
         c.fillStyle = 'rgb(255,255,255)'
-        c.fillText(`Level ${levelNumber} / ${Object.keys(levels).length}`, this.position.x + this.margin, this.position.y + this.fontSize + this.margin);
+        c.fillText(`Level ${levelNumber} / ${Object.keys(levels).length - 1}`, this.position.x + this.margin, this.position.y + this.fontSize + this.margin);
     }
 
     coins(coins) {

@@ -18,7 +18,7 @@ const entityDat = {
 		type: 'solid',
 	},
 };
-const entitiesLevel1 = [
+/* const entitiesLevel1 = [
 	{
 		id: 28,
 		template: 'coin_small_gold.tx',
@@ -195,3 +195,4 @@ const entitiesLevel5 = [
 		y: 290,
 	},
 ];
+ */
