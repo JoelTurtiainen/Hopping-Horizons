@@ -87,7 +87,6 @@ Array.prototype.createEntityArrayFromObject = function () {
 function parseMapData() {
 	const levels = {};
 	for (let index = 0; index < Object.keys(mapData).length; index++) {
-		console.log(index)
 		const map = mapData[index];
 		levels[index] = {
 			init: function () {

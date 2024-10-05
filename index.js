@@ -74,6 +74,10 @@ const player = new Player({
 					onComplete: () => {
 						level++;
 						if (level === 10) level = 0;
+						if (level === 0) {
+							inventory = {};
+							player.health = fullHealth;
+						}
 						levels[level].init();
 						player.switchSprite('idleRight');
 						player.preventInput = false;
@@ -115,7 +119,7 @@ const player = new Player({
 
 let levels = parseMapData();
 
-let level = 4;
+let level = 9;
 /*
 let levels = {
 	0: {
