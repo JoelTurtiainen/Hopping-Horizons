@@ -119,7 +119,7 @@ const player = new Player({
 
 let levels = parseMapData();
 
-let level = 9;
+let level = 3;
 /*
 let levels = {
 	0: {
