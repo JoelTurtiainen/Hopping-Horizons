@@ -19,6 +19,7 @@ class Player extends Sprite {
 		this.gravity = 0.35;
 
 		this.collisionBlocks = collisionBlocks;
+		this.health = fullHealth;
 	}
 
 	update() {

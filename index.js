@@ -20,6 +20,19 @@ let entities;
 let collectables;
 let inventory = {};
 
+const fullHealth = 5;
+
+const uiImgSrcs = {
+	coin: './img/ui/hud_coins.png',
+	numbers: './img/ui/numbers.png',
+	hearts: './img/ui/hearts.png'
+};
+
+const ui = new Ui({
+	position:{x:10,y:10},
+	imgSrcs:uiImgSrcs,
+});
+
 const player = new Player({
 	imageSrc: './img/bunny/idle.png',
 	frameRate: 9,
@@ -78,7 +91,14 @@ const player = new Player({
 				gsap.to(overlay, {
 					opacity: 1,
 					onComplete: () => {
-						levels[level].init();
+						if (player.health > 0) {
+							player.health -= 1;
+							levels[level].init();
+						}
+						else if (player.health === 0) {
+							player.health = fullHealth;
+							levels[1].init();
+						}
 						player.switchSprite('hurt');
 						player.preventInput = false;
 						gsap.to(overlay, {
@@ -441,6 +461,8 @@ function animate() {
 			});
 		});
 	}
+
+	ui.draw({coins:inventory.coin_small_gold, health: player.health, level});
 
 	c.save();
 	c.globalAlpha = overlay.opacity;
