@@ -1,5 +1,7 @@
 let debug = true;
 
+const gameName = 'Tähän pelin nimi';
+
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
@@ -71,7 +73,7 @@ const player = new Player({
 					opacity: 1,
 					onComplete: () => {
 						level++;
-						if (level === 6) level = 1;
+						if (level === 10) level = 0;
 						levels[level].init();
 						player.switchSprite('idleRight');
 						player.preventInput = false;
@@ -97,7 +99,7 @@ const player = new Player({
 						}
 						else if (player.health === 0) {
 							player.health = fullHealth;
-							levels[1].init();
+							levels[0].init();
 						}
 						player.switchSprite('hurt');
 						player.preventInput = false;
@@ -113,6 +115,41 @@ const player = new Player({
 
 let level = 4;
 let levels = {
+	0: {
+		init: function () {
+			level = 0;
+			parsedCollisions = collisionLevel0.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			entities = [];
+			player.collisionBlocks = collisionBlocks;
+			player.position.x = 100;
+			player.position.y = 320;
+
+			if (player.currentAnimation) player.currentAnimation.isActive = false;
+
+			background = new Sprite({
+				position: {
+					x: 0,
+					y: 0,
+				},
+				imageSrc: './img/backgroundLevel0.png',
+			});
+
+			doors = [
+				new Sprite({
+					position: {
+						x: canvas.width/2,
+						y: 336,
+					},
+					imageSrc: './img/doorOpen.png',
+					frameRate: 5,
+					frameBuffer: 7,
+					loop: false,
+					autoplay: false,
+				}),
+			];
+		},
+	},
 	1: {
 		init: function () {
 			parsedCollisions = collisionLevel1.parse2D();
@@ -403,6 +440,40 @@ let levels = {
 			];
 		},
 	},
+	9: {
+		init: function () {
+			parsedCollisions = collisionLevel9.parse2D();
+			collisionBlocks = parsedCollisions.createObjectsFrom2D();
+			entities = [];
+			player.collisionBlocks = collisionBlocks;
+			player.position.x = 100;
+			player.position.y = 380;
+
+			if (player.currentAnimation) player.currentAnimation.isActive = false;
+
+			background = new Sprite({
+				position: {
+					x: 0,
+					y: 0,
+				},
+				imageSrc: './img/backgroundLevel9.png',
+			});
+
+			doors = [
+				new Sprite({
+					position: {
+						x: canvas.width/2,
+						y: 400,
+					},
+					imageSrc: './img/doorOpen.png',
+					frameRate: 5,
+					frameBuffer: 7,
+					loop: false,
+					autoplay: false,
+				}),
+			];
+		},
+	},
 };
 
 const keys = {
@@ -461,8 +532,36 @@ function animate() {
 			});
 		});
 	}
+	let invCoins = inventory.undefined;
 
-	ui.draw({coins:inventory.coin_small_gold, health: player.health, level});
+	if (level === 0) {
+		c.font = '64px serif';
+        c.fillStyle = 'rgb(255,255,255)'
+		c.textAlign = 'center';
+        c.fillText(`${gameName}`,canvas.width/2 ,300);
+		c.textAlign = 'left';
+	}
+	else if (level === 9) {
+		c.font = '64px serif';
+        c.fillStyle = 'rgb(255,255,255)'
+		c.textAlign = 'center';
+        c.fillText('Thank You for playing!',canvas.width/2 ,300);
+		c.font = '32px serif';
+
+		
+		if (invCoins != undefined) {
+			//invCoins = inventory.coin_small_gold;
+			invCoins = inventory.undefined;
+		}
+		else {
+			invCoins = 0;
+		}
+		c.fillText(`You collected ${invCoins} coins`,canvas.width/2 ,350);
+		c.textAlign = 'left';
+	}
+	else {
+		ui.draw({coins:invCoins, health: player.health, level});
+	}
 
 	c.save();
 	c.globalAlpha = overlay.opacity;
