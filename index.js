@@ -21,6 +21,7 @@ let doors;
 let entities;
 let collectables;
 let inventory = {};
+let resetEntities = true;
 
 const fullHealth = 5;
 
@@ -98,8 +99,10 @@ const player = new Player({
 					opacity: 1,
 					onComplete: () => {
 						if (player.health > 0) {
+							resetEntities = false;
 							player.health -= 1;
 							levels[level].init();
+							resetEntities = true;
 						}
 						else if (player.health === 0) {
 							player.health = fullHealth;

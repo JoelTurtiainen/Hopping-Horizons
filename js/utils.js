@@ -92,7 +92,9 @@ function parseMapData() {
 			init: function () {
 				level = index;
 				parsedCollisions = map.collisions.parse2D();
-				entities = map.entities.createEntityArrayFromObject();
+				if (resetEntities) {
+					entities = map.entities.createEntityArrayFromObject();
+				}
 				collisionBlocks = parsedCollisions.createObjectsFrom2D();
 				player.collisionBlocks = collisionBlocks;
 				player.position.x = map.playerInitPosition.x;
