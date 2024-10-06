@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" nextlayerid="4" nextobjectid="23">
+ <editorsettings>
+  <export target="../Export/map7.js" format="js"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../Tilesets/coin_small_gold.tsx"/>
+ <imagelayer id="2" name="Background">
+  <image source="../Resources/backgroundLevel7.png" width="1024" height="576"/>
+ </imagelayer>
+ <objectgroup id="3" name="Objects">
+  <object id="1" template="../Templates/crate.tx" x="928" y="384"/>
+  <object id="2" template="../Templates/crate.tx" x="928" y="352"/>
+  <object id="3" template="../Templates/crate.tx" x="864" y="448"/>
+  <object id="9" template="../Templates/crate.tx" x="672" y="512"/>
+  <object id="10" template="../Templates/coin_small_gold.tx" x="304" y="224"/>
+  <object id="11" template="../Templates/coin_small_gold.tx" x="304" y="224"/>
+  <object id="12" template="../Templates/coin_small_gold.tx" x="304" y="256"/>
+  <object id="13" template="../Templates/coin_small_gold.tx" x="304" y="288"/>
+  <object id="14" template="../Templates/coin_small_gold.tx" x="304" y="320"/>
+  <object id="15" template="../Templates/coin_small_gold.tx" x="304" y="352"/>
+  <object id="16" template="../Templates/coin_small_gold.tx" x="304" y="384"/>
+  <object id="17" template="../Templates/coin_small_gold.tx" x="128" y="512"/>
+  <object id="18" template="../Templates/coin_small_gold.tx" x="560" y="480"/>
+  <object id="19" template="../Templates/coin_small_gold.tx" x="928" y="320"/>
+  <object id="20" template="../Templates/coin_small_gold.tx" x="848" y="256"/>
+  <object id="21" template="../Templates/coin_small_gold.tx" x="752" y="240"/>
+  <object id="22" template="../Templates/coin_small_gold.tx" x="832" y="448"/>
+ </objectgroup>
+</map>

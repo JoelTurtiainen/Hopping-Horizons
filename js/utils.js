@@ -19,7 +19,7 @@ Array.prototype.createObjectsFrom2D = function () {
 								x: x * 64,
 								y: y * 64,
 							},
-						})
+						}),
 					);
 					break;
 				case 2: // Pickup
@@ -29,7 +29,7 @@ Array.prototype.createObjectsFrom2D = function () {
 								x: x * 64,
 								y: y * 64,
 							},
-						})
+						}),
 					);
 					break;
 				case 3: // Trap Block
@@ -39,7 +39,7 @@ Array.prototype.createObjectsFrom2D = function () {
 								x: x * 64,
 								y: y * 64,
 							},
-						})
+						}),
 					);
 					break;
 				case 4: // Half Block
@@ -50,7 +50,7 @@ Array.prototype.createObjectsFrom2D = function () {
 								y: y * 64,
 							},
 							height: 32,
-						})
+						}),
 					);
 					break;
 			}
@@ -60,7 +60,7 @@ Array.prototype.createObjectsFrom2D = function () {
 	return objects;
 };
 
-Array.prototype.createEntityArrayFromObject = function () {
+Array.prototype.createEntityObjects = function () {
 	const objects = {
 		collectable: [],
 		solid: [],
@@ -93,9 +93,11 @@ function parseMapData() {
 				level = index;
 				parsedCollisions = map.collisions.parse2D();
 				if (resetEntities) {
-					entities = map.entities.createEntityArrayFromObject();
+					entities = map.entities.createEntityObjects();
 				}
 				collisionBlocks = parsedCollisions.createObjectsFrom2D();
+				// Push solid entities to the collision block array
+				if (entities.solid) collisionBlocks.push(...entities.solid);
 				player.collisionBlocks = collisionBlocks;
 				player.position.x = map.playerInitPosition.x;
 				player.position.y = map.playerInitPosition.y;
@@ -120,6 +122,6 @@ function parseMapData() {
 				];
 			},
 		};
-	};
-	return levels
-};
+	}
+	return levels;
+}

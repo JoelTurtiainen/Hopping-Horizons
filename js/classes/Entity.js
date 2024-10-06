@@ -1,6 +1,5 @@
 class Entity extends Sprite {
 	constructor({ position, imageSrc, frameRate, frameBuffer, loop, autoplay, scale, type, name }) {
-		console.log(imageSrc);
 		super({ position, imageSrc, frameRate, frameBuffer, loop, autoplay, scale });
 		this.position = position;
 		this.position.y -= 16 * scale;

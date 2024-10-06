@@ -28,12 +28,12 @@ const fullHealth = 5;
 const uiImgSrcs = {
 	coin: './img/ui/hud_coins.png',
 	numbers: './img/ui/numbers.png',
-	hearts: './img/ui/hearts.png'
+	hearts: './img/ui/hearts.png',
 };
 
 const ui = new Ui({
-	position:{x:10,y:10},
-	imgSrcs:uiImgSrcs,
+	position: { x: 10, y: 10 },
+	imgSrcs: uiImgSrcs,
 });
 
 const player = new Player({
@@ -103,8 +103,7 @@ const player = new Player({
 							player.health -= 1;
 							levels[level].init();
 							resetEntities = true;
-						}
-						else if (player.health === 0) {
+						} else if (player.health === 0) {
 							player.health = fullHealth;
 							levels[0].init();
 						}
@@ -122,370 +121,7 @@ const player = new Player({
 
 let levels = parseMapData();
 
-let level = 3;
-/*
-let levels = {
-	0: {
-		init: function () {
-			level = 0;
-			parsedCollisions = collisionLevel0.parse2D();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			entities = [];
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 100;
-			player.position.y = 320;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel0.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: canvas.width/2,
-						y: 336,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	1: {
-		init: function () {
-			parsedCollisions = collisionLevel1.parse2D();
-			entities = entitiesLevel1.createEntityArrayFromObject();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 300;
-			player.position.y = 100;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel1.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 850,
-						y: 336,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	2: {
-		init: function () {
-			parsedCollisions = collisionLevel2.parse2D();
-			entities = [];
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 50;
-			player.position.y = 100;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel2.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 855,
-						y: 336,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	3: {
-		init: function () {
-			parsedCollisions = collisionLevel3.parse2D();
-			entities = entitiesLevel3.createEntityArrayFromObject();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 100;
-			player.position.y = 350;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel3.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 670,
-						y: 80,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	4: {
-		init: function () {
-			parsedCollisions = collisionLevel4.parse2D();
-			entities = entitiesLevel4.createEntityArrayFromObject();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 350;
-			player.position.y = 64;
-		},
-	},
-	4: {
-		init: function () {
-			parsedCollsions = collisionLevel4.parse2D();
-			collisionBlocks = parsedCollsions.createObjectsFrom2D();
-			entities = entitiesLevel4.createEntityArrayFromObject();
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 350;
-			player.position.y = 64;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel4.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 32,
-						y: 400,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	5: {
-		init: function () {
-			parsedCollisions = collisionLevel5.parse2D();
-			entities = entitiesLevel5.createEntityArrayFromObject();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 100;
-			player.position.y = 500;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel5.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 860,
-						y: 400,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	6: {
-		init: function () {
-			parsedCollisions = collisionLevel6.parse2D();
-			entities = [];
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 87;
-			player.position.y = 481;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel6.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 817,
-						y: 399,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	7: {
-		init: function () {
-			parsedCollisions = collisionLevel7.parse2D();
-			entities = [];
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 148;
-			player.position.y = 165;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel7.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 614,
-						y: 144,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	8: {
-		init: function () {
-			parsedCollisions = collisionLevel8.parse2D();
-			entities = [];
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			if (entities.solid) collisionBlocks.push(...entities.solid);
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 850;
-			player.position.y = 336;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel8.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: 859,
-						y: 144,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-	9: {
-		init: function () {
-			parsedCollisions = collisionLevel9.parse2D();
-			collisionBlocks = parsedCollisions.createObjectsFrom2D();
-			entities = [];
-			player.collisionBlocks = collisionBlocks;
-			player.position.x = 100;
-			player.position.y = 380;
-
-			if (player.currentAnimation) player.currentAnimation.isActive = false;
-
-			background = new Sprite({
-				position: {
-					x: 0,
-					y: 0,
-				},
-				imageSrc: './img/backgroundLevel9.png',
-			});
-
-			doors = [
-				new Sprite({
-					position: {
-						x: canvas.width/2,
-						y: 400,
-					},
-					imageSrc: './img/doorOpen.png',
-					frameRate: 5,
-					frameBuffer: 7,
-					loop: false,
-					autoplay: false,
-				}),
-			];
-		},
-	},
-};
-*/
+let level = 8;
 
 const keys = {
 	w: {
@@ -531,7 +167,7 @@ function animate() {
 	if (entities.collectable) {
 		const collidedEntity = player.checkForEntityCollision(entities.collectable);
 		if (collidedEntity) {
-			console.log(collidedEntity);
+			//console.log(collidedEntity);
 			entities.collectable = entities.collectable.filter((i) => i !== collidedEntity);
 			if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
 			else inventory[collidedEntity.name] = 1;
@@ -547,31 +183,27 @@ function animate() {
 
 	if (level === 0) {
 		c.font = '64px serif';
-        c.fillStyle = 'rgb(255,255,255)'
+		c.fillStyle = 'rgb(255,255,255)';
 		c.textAlign = 'center';
-        c.fillText(`${gameName}`,canvas.width/2 ,300);
+		c.fillText(`${gameName}`, canvas.width / 2, 300);
 		c.textAlign = 'left';
-	}
-	else if (level === 9) {
+	} else if (level === 9) {
 		c.font = '64px serif';
-        c.fillStyle = 'rgb(255,255,255)'
+		c.fillStyle = 'rgb(255,255,255)';
 		c.textAlign = 'center';
-        c.fillText('Thank You for playing!',canvas.width/2 ,300);
+		c.fillText('Thank You for playing!', canvas.width / 2, 300);
 		c.font = '32px serif';
 
-		
 		if (invCoins != undefined) {
 			//invCoins = inventory.coin_small_gold;
 			invCoins = inventory.undefined;
-		}
-		else {
+		} else {
 			invCoins = 0;
 		}
-		c.fillText(`You collected ${invCoins} coins`,canvas.width/2 ,350);
+		c.fillText(`You collected ${invCoins} coins`, canvas.width / 2, 350);
 		c.textAlign = 'left';
-	}
-	else {
-		ui.draw({coins:invCoins, health: player.health, level});
+	} else {
+		ui.draw({ coins: invCoins, health: player.health, level });
 	}
 
 	c.save();
