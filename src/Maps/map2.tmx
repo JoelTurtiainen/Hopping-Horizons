@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" nextlayerid="10" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" nextlayerid="10" nextobjectid="20">
  <editorsettings>
   <export target="map2.js" format="js"/>
  </editorsettings>
- <tileset firstgid="1" source="tileset_dirt.tsx"/>
- <tileset firstgid="73" source="spikes.tsx"/>
- <tileset firstgid="77" source="lava.tsx"/>
- <tileset firstgid="85" source="tileset_lava.tsx"/>
- <tileset firstgid="190" source="collision.tsx"/>
- <tileset firstgid="194" source="coin_small_gold.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/tileset_dirt.tsx"/>
+ <tileset firstgid="73" source="../Tilesets/spikes.tsx"/>
+ <tileset firstgid="77" source="../Tilesets/lava.tsx"/>
+ <tileset firstgid="85" source="../Tilesets/tileset_lava.tsx"/>
+ <tileset firstgid="190" source="../Tilesets/collision.tsx"/>
+ <tileset firstgid="194" source="../Tilesets/coin_small_gold.tsx"/>
  <imagelayer id="8" name="Background Color" tintcolor="#5e4661">
-  <image source="Rocky Roads/Backgrounds/4x/white.png" width="1024" height="576"/>
+  <image source="../Resources/Backgrounds/white.png" width="1024" height="576"/>
  </imagelayer>
  <imagelayer id="5" name="Mountains">
-  <image source="Rocky Roads/Backgrounds/4x/mountains_b.png" width="1024" height="576"/>
+  <image source="../Resources/Backgrounds/mountains_b.png" width="1024" height="576"/>
  </imagelayer>
  <layer id="2" name="lava" width="16" height="9">
   <data encoding="csv">
@@ -67,5 +67,22 @@
 0,190,190,192,192,192,192,190,190,192,190,190,192,190,0,0
 </data>
  </layer>
- <objectgroup id="9" name="Collectable"/>
+ <objectgroup id="9" name="Collectable">
+  <object id="3" template="../Templates/coin_small_gold.tx" x="272" y="256"/>
+  <object id="4" template="../Templates/coin_small_gold.tx" x="464" y="192"/>
+  <object id="5" template="../Templates/coin_small_gold.tx" x="368" y="208"/>
+  <object id="6" template="../Templates/coin_small_gold.tx" x="656" y="256"/>
+  <object id="7" template="../Templates/coin_small_gold.tx" x="880" y="224"/>
+  <object id="8" template="../Templates/coin_small_gold.tx" x="880" y="256"/>
+  <object id="9" template="../Templates/coin_small_gold.tx" x="880" y="176"/>
+  <object id="10" template="../Templates/coin_small_gold.tx" x="80" y="512"/>
+  <object id="11" template="../Templates/coin_small_gold.tx" x="112" y="512"/>
+  <object id="12" template="../Templates/coin_small_gold.tx" x="144" y="512"/>
+  <object id="14" template="../Templates/coin_small_gold.tx" x="96" y="480"/>
+  <object id="15" template="../Templates/coin_small_gold.tx" x="128" y="480"/>
+  <object id="16" template="../Templates/coin_small_gold.tx" x="112" y="448"/>
+  <object id="17" template="../Templates/coin_small_gold.tx" x="336" y="448"/>
+  <object id="18" template="../Templates/coin_small_gold.tx" x="336" y="400"/>
+  <object id="19" template="../Templates/coin_small_gold.tx" x="592" y="464"/>
+ </objectgroup>
 </map>

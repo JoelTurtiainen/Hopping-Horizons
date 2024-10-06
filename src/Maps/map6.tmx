@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="25">
+ <editorsettings>
+  <export target="../Export/map6.js" format="js"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../Tilesets/tileset_desert.tsx"/>
+ <tileset firstgid="73" source="../Tilesets/Door.tsx"/>
+ <tileset firstgid="74" source="../Tilesets/collision.tsx"/>
+ <tileset firstgid="78" source="../Tilesets/coin_small_gold.tsx"/>
+ <imagelayer id="6" name="Background" tintcolor="#785f56">
+  <image source="../Resources/Backgrounds/white.png" width="1024" height="576"/>
+ </imagelayer>
+ <objectgroup id="4" name="Objects">
+  <object id="10" template="../Templates/Door.tx" gid="73" x="817" y="511" width="92" height="112" rotation="0"/>
+  <object id="11" template="../Templates/crate.tx" x="64" y="512"/>
+  <object id="12" template="../Templates/crate.tx" x="96" y="512"/>
+  <object id="13" template="../Templates/crate.tx" x="80" y="480"/>
+  <object id="14" template="../Templates/coin_small_gold.tx" x="80" y="448"/>
+  <object id="15" template="../Templates/coin_small_gold.tx" x="336" y="384"/>
+  <object id="16" template="../Templates/coin_small_gold.tx" x="352" y="352"/>
+  <object id="17" template="../Templates/coin_small_gold.tx" x="384" y="320"/>
+  <object id="18" template="../Templates/coin_small_gold.tx" x="416" y="288"/>
+  <object id="19" template="../Templates/coin_small_gold.tx" x="512" y="288"/>
+  <object id="20" template="../Templates/coin_small_gold.tx" x="592" y="384"/>
+  <object id="21" template="../Templates/coin_small_gold.tx" x="576" y="352"/>
+  <object id="22" template="../Templates/coin_small_gold.tx" x="544" y="320"/>
+  <object id="23" template="../Templates/coin_small_gold.tx" x="912" y="320"/>
+  <object id="24" template="../Templates/coin_small_gold.tx" x="464" y="272"/>
+ </objectgroup>
+ <layer id="1" name="Tile Layer 1" width="16" height="9">
+  <data encoding="csv">
+3221225499,3221225493,3221225493,3221225493,3221225493,3221225493,3221225502,2147483676,3221225499,3221225493,3221225493,3221225493,3221225493,3221225493,3221225493,3221225502,
+2684354581,0,0,0,0,0,38,2147483688,43,0,0,0,0,0,0,1610612757,
+2684354581,0,0,0,0,0,3221225503,3221225518,3221225487,0,0,0,0,0,0,1610612757,
+2684354581,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1610612757,
+2684354581,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1610612757,
+2684354581,0,0,0,19,0,0,0,0,4,5,0,0,0,0,1610612757,
+2684354581,0,0,15,21,2147483674,0,0,0,26,21,31,0,0,0,1610612757,
+2684354581,4,5,38,2147483676,43,0,0,0,38,28,43,0,0,19,1610612757,
+30,21,21,27,2147483688,43,0,0,0,38,40,30,21,21,21,27
+</data>
+ </layer>
+ <layer id="5" name="Collision" width="16" height="9" opacity="0.4">
+  <data encoding="csv">
+0,74,74,74,74,74,0,0,0,74,74,74,74,74,74,0,
+74,0,0,0,0,0,74,0,74,0,0,0,0,0,0,74,
+74,0,0,0,0,0,74,74,74,0,0,0,0,0,0,74,
+74,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,
+74,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,
+74,0,0,0,0,0,0,0,0,0,0,0,0,0,0,74,
+74,0,0,74,74,74,0,0,0,74,74,74,0,0,0,74,
+74,0,0,74,0,74,0,0,0,74,0,74,0,0,0,74,
+0,74,74,0,0,74,76,76,76,74,0,0,74,74,74,0
+</data>
+ </layer>
+</map>

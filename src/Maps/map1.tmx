@@ -4,17 +4,17 @@
   <chunksize width="64" height="64"/>
   <export target="map1.js" format="js"/>
  </editorsettings>
- <tileset firstgid="1" source="tileset_dirt.tsx"/>
- <tileset firstgid="73" source="spikes.tsx"/>
- <tileset firstgid="77" source="cannon.tsx"/>
- <tileset firstgid="83" source="collision.tsx"/>
- <tileset firstgid="87" source="coin_small_gold.tsx"/>
- <tileset firstgid="93" source="crate.tsx"/>
+ <tileset firstgid="1" source="../Tilesets/tileset_dirt.tsx"/>
+ <tileset firstgid="73" source="../Tilesets/spikes.tsx"/>
+ <tileset firstgid="77" source="../Tilesets/cannon.tsx"/>
+ <tileset firstgid="83" source="../Tilesets/collision.tsx"/>
+ <tileset firstgid="87" source="../Tilesets/coin_small_gold.tsx"/>
+ <tileset firstgid="93" source="../Tilesets/crate.tsx"/>
  <imagelayer id="7" name="BG Color" tintcolor="#5e4661">
-  <image source="Rocky Roads/Backgrounds/4x/white.png" width="1024" height="576"/>
+  <image source="../Resources/Backgrounds/white.png" width="1024" height="576"/>
  </imagelayer>
  <imagelayer id="6" name="Mountains">
-  <image source="Rocky Roads/Backgrounds/4x/mountains_b.png" width="1024" height="576"/>
+  <image source="../Resources/Backgrounds/mountains_b.png" width="1024" height="576"/>
  </imagelayer>
  <layer id="1" name="Secondary" width="16" height="9">
   <data encoding="csv">
@@ -52,24 +52,24 @@
 83,0,0,0,0,0,0,0,0,0,0,0,0,0,0,83,
 83,0,0,0,0,0,0,0,0,0,0,0,0,0,0,83,
 83,85,85,83,83,83,0,0,0,0,0,0,83,83,83,0,
-0,83,83,0,0,83,0,0,83,83,0,0,83,0,0,0
+0,83,83,0,0,83,85,85,83,83,85,85,83,0,0,0
 </data>
  </layer>
  <objectgroup id="4" name="objects">
-  <object id="28" template="coin_small_gold.tx" x="160" y="352"/>
-  <object id="29" template="coin_small_gold.tx" x="352" y="448"/>
-  <object id="30" template="coin_small_gold.tx" x="448" y="448"/>
-  <object id="31" template="coin_small_gold.tx" x="512" y="512"/>
-  <object id="32" template="coin_small_gold.tx" x="736" y="416"/>
-  <object id="33" template="coin_small_gold.tx" x="784" y="448"/>
-  <object id="56" template="crate.tx" x="608" y="512"/>
-  <object id="57" template="coin_small_gold.tx" x="64" y="240"/>
-  <object id="58" template="coin_small_gold.tx" x="608" y="480"/>
-  <object id="59" template="coin_small_gold.tx" x="640" y="448"/>
-  <object id="60" template="coin_small_gold.tx" x="672" y="416"/>
-  <object id="61" template="coin_small_gold.tx" x="704" y="400"/>
-  <object id="62" template="coin_small_gold.tx" x="64" y="272"/>
-  <object id="63" template="coin_small_gold.tx" x="64" y="304"/>
-  <object id="64" template="coin_small_gold.tx" x="112" y="336"/>
+  <object id="28" template="../Templates/coin_small_gold.tx" x="160" y="352"/>
+  <object id="29" template="../Templates/coin_small_gold.tx" x="352" y="448"/>
+  <object id="30" template="../Templates/coin_small_gold.tx" x="448" y="448"/>
+  <object id="31" template="../Templates/coin_small_gold.tx" x="512" y="512"/>
+  <object id="32" template="../Templates/coin_small_gold.tx" x="736" y="416"/>
+  <object id="33" template="../Templates/coin_small_gold.tx" x="784" y="448"/>
+  <object id="56" template="../Templates/crate.tx" x="608" y="512"/>
+  <object id="57" template="../Templates/coin_small_gold.tx" x="64" y="240"/>
+  <object id="58" template="../Templates/coin_small_gold.tx" x="608" y="480"/>
+  <object id="59" template="../Templates/coin_small_gold.tx" x="640" y="448"/>
+  <object id="60" template="../Templates/coin_small_gold.tx" x="672" y="416"/>
+  <object id="61" template="../Templates/coin_small_gold.tx" x="704" y="400"/>
+  <object id="62" template="../Templates/coin_small_gold.tx" x="64" y="272"/>
+  <object id="63" template="../Templates/coin_small_gold.tx" x="64" y="304"/>
+  <object id="64" template="../Templates/coin_small_gold.tx" x="112" y="336"/>
  </objectgroup>
 </map>

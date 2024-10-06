@@ -1,0 +1,146 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Maps/map1.tmx",
+    "expandedProjectPaths": [
+        "Maps",
+        ".",
+        "Tilesets"
+    ],
+    "fileStates": {
+        "Maps/cannon.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/coin_small_gold.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/collision.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/crate.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/lava.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/map1.tmx": {
+            "scale": 1,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 619.5,
+                "y": 235
+            }
+        },
+        "Maps/map2.tmx": {
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 0.75,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 579.3333333333334,
+                "y": 222.66666666666669
+            }
+        },
+        "Maps/map6.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 518.5,
+                "y": 269
+            }
+        },
+        "Maps/spikes.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/tileset_dirt.tsx": {
+            "scaleInDock": 1
+        },
+        "Maps/tileset_lava.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/Door.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "Tilesets/cannon.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/coin_small_gold.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/collision.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/crate.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3
+        },
+        "Tilesets/doorOpen.tsx": {
+            "scaleInDock": 1
+        },
+        "Tilesets/lava.tsx": {
+            "dynamicWrapping": true
+        },
+        "Tilesets/map6.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 506.5,
+                "y": 264
+            }
+        },
+        "Tilesets/spikes.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilesets/tileset_dirt.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/home/jole/Projects/Web Projects/vertical-platformer/src/Export",
+    "last.externalTilesetPath": "/home/jole/Projects/Web Projects/vertical-platformer/src/Tilesets",
+    "last.imagePath": "/home/jole/Projects/Web Projects/vertical-platformer/src/Resources/Rocky Roads/Tilesets",
+    "last.objectTemplatePath": "/home/jole/Projects/Web Projects/vertical-platformer/src/Templates",
+    "map.height": 9,
+    "map.lastUsedExportFilter": "JavaScript map files (*.js)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 16,
+    "openFiles": [
+        "Maps/map1.tmx",
+        "Tilesets/cannon.tsx",
+        "Tilesets/coin_small_gold.tsx",
+        "Tilesets/collision.tsx",
+        "Tilesets/tileset_dirt.tsx",
+        "Tilesets/crate.tsx",
+        "Tilesets/spikes.tsx"
+    ],
+    "project": "vertical-plaformer.tiled-project",
+    "recentFiles": [
+        "Maps/map6.tmx",
+        "Tilesets/spikes.tsx",
+        "Tilesets/crate.tsx",
+        "Tilesets/tileset_dirt.tsx",
+        "Tilesets/collision.tsx",
+        "Tilesets/coin_small_gold.tsx",
+        "Tilesets/cannon.tsx",
+        "Maps/map1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 56,
+        "width": 46
+    }
+}
