@@ -105,6 +105,7 @@ const player = new Player({
 							resetEntities = true;
 						} else if (player.health === 0) {
 							player.health = fullHealth;
+							inventory = {};
 							levels[0].init();
 						}
 						player.switchSprite('hurt');
