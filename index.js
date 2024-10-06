@@ -214,4 +214,8 @@ function animate() {
 	c.restore();
 }
 levels[level].init();
-animate();
+
+// Calling the Animate() function after the entire page has loaded reduces the "clipping", especially in Firefox when user refresh page.
+window.addEventListener("load", () => {
+	animate();
+});
