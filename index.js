@@ -20,7 +20,6 @@ let background;
 let doors;
 let entities;
 let collectables;
-let inventory = {};
 let resetEntities = true;
 
 const fullHealth = 5;
@@ -76,7 +75,7 @@ const player = new Player({
 						level++;
 						if (level === 10) level = 0;
 						if (level === 0) {
-							inventory = {};
+							player.clearInventory();
 							player.health = fullHealth;
 						}
 						levels[level].init();
@@ -105,7 +104,7 @@ const player = new Player({
 							resetEntities = true;
 						} else if (player.health === 0) {
 							player.health = fullHealth;
-							inventory = {};
+							player.clearInventory();
 							levels[0].init();
 						}
 						player.switchSprite('hurt');
@@ -170,8 +169,8 @@ function animate() {
 		if (collidedEntity) {
 			//console.log(collidedEntity);
 			entities.collectable = entities.collectable.filter((i) => i !== collidedEntity);
-			if (inventory[collidedEntity.name]) inventory[collidedEntity.name]++;
-			else inventory[collidedEntity.name] = 1;
+			if (player.inventory[collidedEntity.name]) player.inventory[collidedEntity.name]++;
+			else player.inventory[collidedEntity.name] = 1;
 		}
 
 		Object.entries(entities).forEach(([key, value]) => {
@@ -180,7 +179,9 @@ function animate() {
 			});
 		});
 	}
-	let invCoins = inventory.undefined;
+
+	//let invCoins = player.inventory.coin_small_gold
+	let invCoins = player.inventory.undefined;
 
 	if (level === 0) {
 		c.font = '64px serif';
@@ -195,12 +196,6 @@ function animate() {
 		c.fillText('Thank You for playing!', canvas.width / 2, 300);
 		c.font = '32px serif';
 
-		if (invCoins != undefined) {
-			//invCoins = inventory.coin_small_gold;
-			invCoins = inventory.undefined;
-		} else {
-			invCoins = 0;
-		}
 		c.fillText(`You collected ${invCoins} coins`, canvas.width / 2, 350);
 		c.textAlign = 'left';
 	} else {

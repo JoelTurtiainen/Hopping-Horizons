@@ -20,6 +20,9 @@ class Player extends Sprite {
 
 		this.collisionBlocks = collisionBlocks;
 		this.health = fullHealth;
+		this.inventory = {
+			coin_small_gold: 0
+		}
 	}
 
 	update() {
@@ -158,5 +161,11 @@ class Player extends Sprite {
 				this.hitbox.position.y + this.hitbox.height >= entity.position.y &&
 				this.hitbox.position.y <= entity.position.y + entity.height
 		);
+	}
+
+	clearInventory() {
+		for (const [key, value] of Object.entries(this.inventory)) {
+			this.inventory[key] = 0;
+		};
 	}
 }
