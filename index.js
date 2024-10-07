@@ -73,7 +73,7 @@ const player = new Player({
 					opacity: 1,
 					onComplete: () => {
 						level++;
-						if (level === 10) level = 0;
+						if (level === Object.keys(levels).length) level = 0;
 						if (level === 0) {
 							player.clearInventory();
 							player.health = fullHealth;
@@ -121,7 +121,7 @@ const player = new Player({
 
 let levels = parseMapData();
 
-let level = 8;
+let level = 0;
 
 const keys = {
 	w: {
