@@ -1,6 +1,6 @@
-let debug = true;
+let debug = false;
 
-const gameName = 'Tähän pelin nimi';
+const gameName = 'Hopping Horizons';
 
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
@@ -12,6 +12,7 @@ let frames = 0;
 
 canvas.width = 1024;
 canvas.height = 576;
+c.imageSmoothingEnabled = false;
 
 let parsedCollisions;
 let parsedTraps;
@@ -211,6 +212,6 @@ function animate() {
 levels[level].init();
 
 // Calling the Animate() function after the entire page has loaded reduces the "clipping", especially in Firefox when user refresh page.
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
 	animate();
 });
